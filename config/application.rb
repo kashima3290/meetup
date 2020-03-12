@@ -8,7 +8,9 @@ Bundler.require(*Rails.groups)
 
 module Meetup
   class Application < Rails::Application
-    config.generaters do |g|
+    config.time_zone = 'Tokyo'
+    
+    config.generators do |g|
       g.stylesheets false
       g.javascripts false
       g.helper false
