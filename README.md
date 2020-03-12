@@ -14,7 +14,7 @@
 - has_many :boards
 
 
-## communiteisテーブル
+## communitiesテーブル
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null: false, foreign_key: true|
@@ -22,7 +22,7 @@
 |iamge|string||
 
 ### Association
-- has many :users, through::groups_user
+- has_many :users, through::community_user
 - has_many :messages
 - has_many :boards
 
