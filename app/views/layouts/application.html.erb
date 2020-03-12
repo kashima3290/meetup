@@ -1,15 +1,25 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Meetup</title>
+    <title>meetup</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
   <body>
-    <%= yield %>
+    <header class="header bg-warning">
+      <div class="header__box">
+        <h1 class="header__box--title">meetup</h1>
+      </div>
+    </header>
+    <div class='main'>
+      <div class='main__side bg-warning'>
+      </div>
+    <div class='main__group'>
+      <%= yield %>
+    </div>
+    </div>
   </body>
 </html>
