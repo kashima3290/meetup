@@ -1,8 +1,11 @@
 <h1>新規コミュニティ作成</h1>
 
 <%= form_with(model: @community, local: true) do |form| %>
+  <h1>名前</h1>
   <%= form.text_field :name, placeholder: "Nickname" %>
+  <h1>画像</h1>
   <%= form.text_field :image, placeholder: "Image Url" %>
+  <h1>introduction</h1>
   <%= form.text_area :text, placeholder: "text" %>
   <%= form.submit "SEND" %>
 <% end %>

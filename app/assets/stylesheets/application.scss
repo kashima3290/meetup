@@ -19,6 +19,8 @@
  @import "bootstrap";
  @import "font-awesome";
  @import "reset";
- @import "modules/community.scss";
- @import "modules/user.scss";
+ @import "modules/community/index.scss";
+ @import "modules/community/new.scss";
+ @import "modules/community/create";
+ @import "modules/user/index.scss";
  
