@@ -14,8 +14,11 @@
  *= require_self
  */
 
+ @import 'font-awesome-sprockets';
+ @import 'font-awesome';
  @import "bootstrap";
- @import "font-awesome-sprokets";
  @import "font-awesome";
  @import "reset";
- @import "modules/communities.scss"
+ @import "modules/community.scss";
+ @import "modules/user.scss";
+ 

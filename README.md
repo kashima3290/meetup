@@ -2,27 +2,28 @@
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null: false, foreign_key: true|
+|age|integer||
+|gender|string||
+|email|text|null: false, foreign_key: true|
 |password|text|null: false|
-|email|text|null: false|
 |iamge|string||
 |text|text||
 
 ### Association
-- has many :groups, through::groups_user
+- has many :communities, through::communitiy_users
 - has_many :messages
 - has_many :comments
-- has_many :boards
+- has_many :tags throughh::user_tags
 
 
-## communiteisテーブル
+## communitiesテーブル
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null: false, foreign_key: true|
-|email|text|null: false|
 |iamge|string||
 
 ### Association
-- has many :users, through::groups_user
+- has_many :users, through::community_user
 - has_many :messages
 - has_many :boards
 

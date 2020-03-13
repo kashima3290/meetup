@@ -1,3 +1,5 @@
 Rails.application.routes.draw do
-  resources :user, only: :index
+  devise_for :users
+  root 'communities#index'
+  resources :communities, only: [:index, :new]
 end
