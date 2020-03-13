@@ -23,5 +23,12 @@ html, body {
   &__side {
     height: 100%;
     width: 70px;
+    &--icon {
+      padding-top: 50px;
+      text-align: center;
+    }
+  }
+  &__space {
+    display: block;
   }
 }
