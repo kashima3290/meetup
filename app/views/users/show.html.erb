@@ -1,0 +1,16 @@
+<%= render 'communities/header' %>
+<h1>user情報一覧</h1>
+<p>
+  <%= current_user.name %>
+</p>
+<p>
+  <%= current_user.gender %>
+</p>
+<p>
+  <%= current_user.email %>
+</p>
+<p>
+  <%= current_user.text %>
+</p>
+<%= link_to "編集", edit_user_path(current_user), class: "fas fa-user" %>
+<%= link_to "logout", destroy_user_session_path, method: :delete, class: 'btn' %>

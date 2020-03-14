@@ -7,10 +7,16 @@ class CommunitiesController < ApplicationController
 
   def new
     @community = Community.new
+    # @community.users << current_user
   end
 
   def create
-    Community.create(community_params)
+    @community = Community.new(community_params)
+    if @community.save
+      redirect_to root_path
+    else
+      render :new
+    end
   end
 
   def destroy
@@ -22,7 +28,11 @@ class CommunitiesController < ApplicationController
 
   def update
     community = Community.find(params[:id])
-    community.update(community_params)
+    if community.save(community_params)
+      redirect_to root_path
+    else
+      render :edit
+    end
   end
 
   def show
@@ -31,7 +41,7 @@ class CommunitiesController < ApplicationController
 
   private
   def community_params
-    params.require(:community).permit(:name, :image, :text).merge(user_id: current_user.id)
+    params.require(:community).permit(:name, :image, :text, user_ids: [])
   end
 
   def move_to_index

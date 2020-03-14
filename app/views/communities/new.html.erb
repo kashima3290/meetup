@@ -7,5 +7,8 @@
   <%= form.text_field :image, placeholder: "Image Url" %>
   <h1>introduction</h1>
   <%= form.text_area :text, placeholder: "text" %>
+  <h1>member</h1>
+  <%= form.collection_check_boxes :user_ids, User.all, :id, :name %>
+  <h1></h1>
   <%= form.submit "SEND" %>
 <% end %>

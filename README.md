@@ -25,6 +25,7 @@
 ### Association
 - has_many :users, through::community_user
 - has_many :messages
+- has_many :tags
 - has_many :boards
 
 ## community-usersテーブル
@@ -61,6 +62,38 @@
 ### Association
 - belongs_to :user
 - belongs_to :bords
+
+## tagsテーブル
+|Column|Type|Options|
+|------|----|-------|
+|user_id|reference|null: false, foreign_key: true|
+|community_id|reference|null: false, foreign_key: true|
+|image|string||
+|text|text||
+
+### Association
+- belongs_to :group
+- has_many: user
+
+## community_tagsテーブル
+|Column|Type|Options|
+|------|----|-------|
+|user_id|reference|null: false, foreign_key: true|
+|community_id|reference|null: false, foreign_key: true|
+|image|string||
+|text|text||
+
+## user_tagsテーブル
+|Column|Type|Options|
+|------|----|-------|
+|user_id|reference|null: false, foreign_key: true|
+|community_id|reference|null: false, foreign_key: true|
+|image|string||
+|text|text||
+
+### Association
+- belongs_to :group
+- has_many: user
 
 ## boardsテーブル
 |Column|Type|Options|

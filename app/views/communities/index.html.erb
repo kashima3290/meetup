@@ -1,31 +1,13 @@
-<header class="header bg-warning">
-  <div class="header__box">
-    <h1 class="header__box--title">meetup</h1>
-  </div>
-</header>
-<div class='main'>
-  <div class='main__side bg-warning'>
-    <div class='main__side--icon'>          
-      <i class="fas fa-user"></i>
-    </div>
-    <div class='main__side--icon'>
-      <i class="fas fa-users"></i>
-    </div>
-    <div class='main__side--icon'>
-      <i class="fas fa-users-cog"></i>
-    </div>
-  </div>
-<div class='main__space'>
-
+<%= render 'header' %>
 <div class="card mb-3">
   <% @communities.each do |community| %>
   <svg class="bd-placeholder-img card-img-top" width="100%" height="180" xmlns="#{<%= community.image %>}" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Image cap"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"/><text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image cap</text></svg>
   <div class="card-body">
     <h5 class="card-title"><%= community.name %></h5>
     <p class="card-text"><%= community.text %></p>
-    <%= link_to '編集', "/communities/#{community.id}/edit", method: :get %>
+    <%= link_to '編集', edit_community_path(community.id) %>
     <h1></h1>
-    <%= link_to '詳細', "/communities/#{community.id}", method: :get %>
+    <%= link_to '詳細', community_path(community.id) %>
     <p class="card-text"><small class="text-muted">フリー</small></p>
   </div>
   <% end %>
