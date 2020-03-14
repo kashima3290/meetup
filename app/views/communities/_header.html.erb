@@ -1,8 +1,8 @@
 <header class= "bg-warning sticky-top">
   <h1><%= current_user.name %></h1>
   <div class="icon-box">
-    <%= link_to "", user_path(current_user.id), class: "fas fa-user" %>
-    <%= link_to "", root_path(current_user.id), class: "fas fa-users" %>
-    <%= link_to "", new_community_path, class: "fas fa-user-plus" %>
+    <%= link_to "user", user_path(current_user.id), class: "fas fa-user" %>
+    <%= link_to "commu", root_path(current_user.id), class: "fas fa-users" %>
+    <%= link_to " +commu", new_community_path, class: "fas fa-user-plus" %>
   </div>
 </header>

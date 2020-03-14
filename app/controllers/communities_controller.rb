@@ -39,6 +39,9 @@ class CommunitiesController < ApplicationController
     @community = Community.find(params[:id])
   end
 
+  def chat
+  end
+
   private
   def community_params
     params.require(:community).permit(:name, :image, :text, user_ids: [])
