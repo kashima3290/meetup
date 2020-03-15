@@ -4,5 +4,6 @@ Rails.application.routes.draw do
   resources :users, only: [:edit, :update, :show]
   resources :communities do
     get 'chat'
+    resources :messages, only: [:index, :create]
   end
 end

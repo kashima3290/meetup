@@ -8,7 +8,6 @@
 |password|text|null: false|
 |iamge|string||
 |text|text||
-
 ### Association
 - has many :communities, through::communitiy_users
 - has_many :messages
@@ -21,7 +20,6 @@
 |------|----|-------|
 |name|string|null: false, foreign_key: true|
 |iamge|string||
-
 ### Association
 - has_many :users, through::community_user
 - has_many :messages
@@ -33,7 +31,6 @@
 |------|----|-------|
 |user_id|reference|null: false, foreign_key: true|
 |community_id|reference|null: false, foreign_key: true|
-
 ### Association
 - belongs_to :group
 - belongs_to :user
@@ -45,10 +42,10 @@
 |community_id|reference|null: false, foreign_key: true|
 |image|string||
 |text|text||
-
 ### Association
 - belongs_to :group
 - belongs_to :user
+
 
 ## commentsテーブル
 |Column|Type|Options|
@@ -57,11 +54,10 @@
 |community_id|reference|null: false, foreign_key: true|
 |image|string||
 |text|text||
-
-
 ### Association
 - belongs_to :user
 - belongs_to :bords
+
 
 ## tagsテーブル
 |Column|Type|Options|
@@ -70,10 +66,10 @@
 |community_id|reference|null: false, foreign_key: true|
 |image|string||
 |text|text||
-
 ### Association
 - belongs_to :group
 - has_many: user
+
 
 ## community_tagsテーブル
 |Column|Type|Options|
@@ -82,6 +78,9 @@
 |community_id|reference|null: false, foreign_key: true|
 |image|string||
 |text|text||
+### Association
+- belongs_to :group
+- has_many: user
 
 ## user_tagsテーブル
 |Column|Type|Options|
@@ -90,7 +89,6 @@
 |community_id|reference|null: false, foreign_key: true|
 |image|string||
 |text|text||
-
 ### Association
 - belongs_to :group
 - has_many: user
