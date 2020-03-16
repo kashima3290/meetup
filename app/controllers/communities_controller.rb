@@ -1,13 +1,13 @@
 class CommunitiesController < ApplicationController
   before_action :move_to_index, expect: [:index, :show]
 
-  def index 
+  def index
     @communities = Community.all
   end
 
   def new
     @community = Community.new
-    # @community.users << current_user
+    @community.users << current_user
   end
 
   def create
