@@ -102,5 +102,5 @@
 |text|text||
 
 ### Association
-- belongs_to :group
+- belongs_to :community
 - has_many: user
