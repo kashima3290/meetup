@@ -21,6 +21,8 @@ header{
   }
   .icon-box {
     margin-left: 80px;
+    display: flex;
+    align-items: center;
     a {
       color: black;
       font-size: larger;
@@ -28,6 +30,13 @@ header{
     }
   }
 }
+
+.form-btn-board {
+  height: 50px;
+  line-height: 50px;
+  margin-left: 60px;
+}
+
 // image-icon
 .card-img-top {
   width: 200px;
