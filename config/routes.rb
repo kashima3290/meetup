@@ -5,6 +5,6 @@ Rails.application.routes.draw do
   resources :communities do
     get 'chat'
     resources :messages, only: [:index, :create]
-    resources :boards, only: [:index, :new, :create, :show]
+    resources :boards, only: [:index, :new, :create, :show, :destroy]
   end
 end

@@ -9,4 +9,5 @@ class User < ApplicationRecord
   has_many :boards, through: :board_users
   
   validates :name, presence: true, uniqueness: true
+  mount_uploader :image, ImageUploader
 end

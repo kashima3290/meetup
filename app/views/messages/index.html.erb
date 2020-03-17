@@ -1,6 +1,9 @@
 <%= render 'communities/header' %>
 <div class="message-index">
   <div class='side'>
+  <% if @community.image.present? %>
+    <%= image_tag @community.image.url, class: "community-icon" %>
+  <% end %>
   </div>
   <div class='message-main'>
     <div class='messages'>

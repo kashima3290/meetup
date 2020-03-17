@@ -1,6 +1,7 @@
 class Message < ApplicationRecord
   belongs_to :community
   belongs_to :user
+  belongs_to :board
 
   validates :text, presence: true, unless: :image?
 

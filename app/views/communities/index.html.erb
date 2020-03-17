@@ -8,8 +8,8 @@
     <h5 class="card-title"><%= community.name %></h5>
     <p class="card-text"><%= community.text %></p>
     <p class="card-text"><small class="text-muted">free text</small></p>
-    <%= link_to 'edit', edit_community_path(community.id) %>
-    <%= link_to 'show', community_path(community.id) %>
+    <%= link_to 'edit', edit_community_path(community.id), class: "btn btn-success" %>
+    <%= link_to 'show', community_path(community.id) ,class: "btn btn-success"%>
     <h1></h1>
     <%= link_to 'INTO CHAT', community_messages_path(community.id), class: "btn bg-primary text-light" %>
     <%= link_to 'NEW BOARD', new_community_board_path(community.id), class: "btn bg-light text-warning" %>
