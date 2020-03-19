@@ -28,7 +28,7 @@ class CommunitiesController < ApplicationController
 
   def update
     community = Community.find(params[:id])
-    if community.save(community_params)
+    if community.update(community_params)
       redirect_to root_path
     else
       render :edit

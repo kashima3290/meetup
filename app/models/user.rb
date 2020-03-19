@@ -6,6 +6,7 @@ class User < ApplicationRecord
   has_many :community_users
   has_many :communities, through: :community_users
   has_many :messages
+  has_many :parts
   has_many :boards, through: :board_users
   
   validates :name, presence: true, uniqueness: true

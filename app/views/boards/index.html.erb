@@ -1,22 +1,7 @@
 <%= render 'communities/header' %>
-<div class='boads'>
-  <% @boards.each do |board| %>
-  <div class='board'>
-    <div class="card">
-      <div class="card-header">
-        community_name
-      </div>
-      <div class="card-body">
-        <h5 class="card-title"></h5>
-        <p class="card-text"><%= board.text %></p>
-        <a href="#" class="btn btn-light">show</a>
-      </div>
-    </div>
-  </div>
-  <% end %>
-</div>
 
-
+<% @boards.each do |b| %>
+<% if b.image.present? %>
 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
   <ol class="carousel-indicators">
     <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -24,15 +9,13 @@
     <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
   </ol>
   <div class="carousel-inner">
+
     <div class="carousel-item active">
-      <img src="..." class="d-block w-100" alt="...">
+    <%= @parts.each do %>
+      <%= b.image.url %>
+    <% end %>
     </div>
-    <div class="carousel-item">
-      <img src="..." class="d-block w-100" alt="...">
-    </div>
-    <div class="carousel-item">
-      <img src="..." class="d-block w-100" alt="...">
-    </div>
+
   </div>
   <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -43,4 +26,24 @@
     <span class="sr-only">Next</span>
   </a>
 </div>
+<% end %>
+
+<div class="card">
+  <div class="card-header">
+    name
+  </div>
+  <div class="card-body">
+    <blockquote class="blockquote mb-0">
+      <% if b.text.present? %>
+        <% @parts.each do |p| %>
+        <p><%= p.text %></p>
+        <% end %>
+      <% end %>
+      <footer class="blockquote-footer">
+      <cite title="Source Title">community</cite></footer>
+    </blockquote>
+  </div>
+</div>
+<% end %>
+
 

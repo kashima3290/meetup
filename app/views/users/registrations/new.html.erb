@@ -22,7 +22,7 @@
 
   <div class='field'>
     <%= f.label :gender %><br />
-    <%= f.select :gender, ["male","female","未選択"] , {include_blank: '未選択'} %>
+    <%= f.select :gender, ["male","female","unselected"] , {include_blank: 'unselected'} %>
   </div>
 
   <div class="field">
@@ -41,6 +41,11 @@
   <div class="field">
     <%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+  </div>
+
+  <div class="field">
+    <h1>Introduction</h1>
+    <%= f.text_area :text %>
   </div>
 
   <div class="actions">

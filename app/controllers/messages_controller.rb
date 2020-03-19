@@ -12,7 +12,7 @@ class MessagesController < ApplicationController
       redirect_to community_messages_path(@community)
     else
       @messages = @community.messages.includes(:user)
-      render :index
+      redirect_to community_messages_path(@community)
     end
   end
 

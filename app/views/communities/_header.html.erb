@@ -1,5 +1,7 @@
 <header class= "sticky-top text-center">
-  <%= image_tag current_user.image.url, class: "user-icon" %>
+  <% if current_user.image.present? %>
+    <%= image_tag current_user.image.url, class: "user-icon" %>
+  <% end %>
   <h1><%= current_user.name %></h1>
   <div class="icon-box">
     <%= link_to "", user_path(current_user.id), class: "fas fa-user" %>

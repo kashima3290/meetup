@@ -1,11 +1,12 @@
 <%= render 'header' %>
 <h1>edit</h1>
   <h1>Icon</h1>
-<%= form_with(model: @community, local: true) do |form| %>
-  <%= form.text_field :image, placeholder: "image" %>
+<%= form_with(model: @community, local: true) do |f| %>
+  <%= f.file_field :image, placeholder: "image" %>
   <h1>Community Name</h1>
-  <%= form.text_field :name, placeholder: "name" %>
+  <%= f.text_field :name, placeholder: "name" %>
   <h1>Introduction</h1>
-  <%= form.text_area :text, placeholder: "text" %>
-  <%= form.submit "SEND" %>
+  <%= f.text_area :text, placeholder: "text" %>
+  <%= f.collection_check_boxes :user_ids, User.all, :id, :name %>
+  <%= f.submit "SEND" %>
 <% end %>
