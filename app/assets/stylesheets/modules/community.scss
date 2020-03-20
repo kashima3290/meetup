@@ -62,26 +62,30 @@ header{
 // message_index
 .message-index {
   display: flex;
-  height: 90%;
+  height: 100%;
   width: 100%;
   .side {
     background-color: #FFFAF0	;
     width: 22%;
+    height: 100%;
     text-align: center;
+    position: fixed;
   }
   .message-main {
     height: 100%;
     width: 100%;
     display: block;
-    height: 100%;
-    width: 100%;
-    overflow: scroll;
+    margin-bottom: 7%;
     .messages {
+      overflow: scroll;
+      margin-left: 23%;
       background-color: white;
-      height: 90%;
+      height: 100%;
       width: 100%;
       .message {
-        margin: 20px;
+        margin: 30px;
+        height: 80px;
+        width: 100%;
         &__messanger {
           display: flex;
           align-items: center;

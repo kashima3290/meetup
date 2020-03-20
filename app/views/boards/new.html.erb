@@ -20,27 +20,6 @@
   <% end %>
   </div>
   <div class='message-main'>
-
-    <div class='messages'>
-    <%= render 'message', collection: @messages %>
-    </div>
-
-    <div class='message__form fixed-bottom'>
-      <div class='message__form--box'>
-        <%= form_with class: 'form-box' do |f| %>
-          <%= f.text_field :text, class: 'f-text', placeholder: 'text' %>
-            <div class='btns'>
-            <%= f.label :image, class: 'add-option' do %>
-              <i class="fab fa-delicious"></i>
-              <%= f.file_field :image, class: 'file' %>
-            <% end %>
-            <%= f.button type: 'submit', class: 'form-btn' do %>
-              <i class="fas fa-upload"></i>
-              <%= f.submit class: 'secret-btn' %>
-            <% end %>
-            </div>
-          <% end %>
-      </div>
-    </div>
+  
   </div>
 </div>
