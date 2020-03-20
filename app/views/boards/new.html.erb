@@ -1,33 +1,46 @@
 <header class= "sticky-top text-center">
-<%= image_tag current_user.image.url, class: "user-icon" %>
-<h1><%= current_user.name %></h1>
-<div class="icon-box">
-<%= link_to "", community_messages_path, class: "far fa-comment-dots" %>
-<%= form_with class: 'form-box', model: @boards do |b| %>
-<%= b.button type: 'submit', class: 'form-btn-board bg-primary text-light' do %>
-create
-<% end %>
-<% end %>
-</div>
-</div>
+  <%= image_tag current_user.image.url, class: "user-icon" %>
+  <h1><%= current_user.name %></h1>
+  <div class="icon-box">
+    <%= link_to "", root_path, class: "fas fa-backspace" %>
+    <%= link_to "", community_messages_path, class: "far fa-comment-dots" %>
+    <%= form_with class: 'form-box', url: community_boards_path do |b| %>
+      <%= b.button type: 'submit', class: 'form-btn-board btn bg-light text-primary border ml-5' do %>
+        create
+      <% end %>
+    <% end %>
+  </div>
+  </div>
 </header>
 
-<%= link_to "編集", community_parts_path(@community.id) %>
-<div>合同作成</div>
-<%= form_with url: community_boards_path, local: true do |f| %>
-  <% @parts.each do |p| %>
-  <% if p.image.present? %>
-    <%= image_tag p.image.url %>
-    <%= f.file_field :image, value: p.image.url %>
+<div class="message-index">
+  <div class='side'>
+  <% if @community.image.present? %>
+    <%= image_tag @community.image.url, class: "community-icon" %>
   <% end %>
-  <% end %>
-  <h1></h1>
-  <% @parts.each do |p| %>
-    <h1>
-    <% if p.text.present? %>
-    <%= f.text_field :text, class: 'f-text', value: "#{p.user.name}➡️#{p.text}" %>
-    </h1>
-    <% end %>
-  <% end %>
-  <%= f.submit "完成" %>
-<% end %>
+  </div>
+  <div class='message-main'>
+
+    <div class='messages'>
+    <%= render 'message', collection: @messages %>
+    </div>
+
+    <div class='message__form fixed-bottom'>
+      <div class='message__form--box'>
+        <%= form_with class: 'form-box' do |f| %>
+          <%= f.text_field :text, class: 'f-text', placeholder: 'text' %>
+            <div class='btns'>
+            <%= f.label :image, class: 'add-option' do %>
+              <i class="fab fa-delicious"></i>
+              <%= f.file_field :image, class: 'file' %>
+            <% end %>
+            <%= f.button type: 'submit', class: 'form-btn' do %>
+              <i class="fas fa-upload"></i>
+              <%= f.submit class: 'secret-btn' %>
+            <% end %>
+            </div>
+          <% end %>
+      </div>
+    </div>
+  </div>
+</div>

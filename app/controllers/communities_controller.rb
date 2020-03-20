@@ -2,7 +2,7 @@ class CommunitiesController < ApplicationController
   before_action :move_to_index, expect: [:index, :show]
 
   def index
-    @communities = Community.all
+    @communities = Community.includes(:user)
   end
 
   def new

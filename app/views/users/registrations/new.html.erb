@@ -1,56 +1,67 @@
-<h2>Sign up</h2>
+<h2 class ="h2 sign bg-warning pt-3 pb-3">Sign up</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
-  
-  <div class='field'>
+<form>
+<div class='field'>
+  </div>
+
+  <div class="form-group">
     <%= f.label :image %>
-    <h1></h1>
-    <%= f.file_field :image %>
+    <%= f.file_field :image, class: "form-control-file", id: "exampleFormControlFile1" %>
   </div>
 
-  <div class='field'>
+  <div class="form-group">
     <%= f.label :name %><em>(10 characters maximum)</em><br />
-    <%= f.text_field :name, autofocus: true, maxlength: "10" %>
+    <%= f.text_field :name, autofocus: true, maxlength: "10", class: "form-control", id: "exampleFormControlInput1", placeholder: "name" %>
   </div>
 
-  <div class='field'>
+
+  <div class="form-group">
     <%= f.label :age %>
-    <%= f.select :age,  options_for_select((10..100).to_a) %>
-    <br />
+    <%= f.select :age,  options_for_select((10..100).to_a), class: "form-control",id: "exampleFormControlSelect1" %>
+    </select>
   </div>
 
-  <div class='field'>
+  <div class="form-group">
     <%= f.label :gender %><br />
-    <%= f.select :gender, ["male","female","unselected"] , {include_blank: 'unselected'} %>
+      <%= f.select :gender, ["male","female","unselected"] , {include_blank: 'unselected'} %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
+    <label for="exampleFormControlTextarea1">Introduction</label>
+    <%= f.text_area :text, class: "form-control", id: "exampleFormControlTextarea1", rows: 3 %>
+  </div>
+  
+  
+  <div class="form-group">
     <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", type:"email", class: "form-control", id: "exampleFormControlInput1", placeholder: "name@example.com" %>
   </div>
 
-  <div class="field">
+
+
+
+  <div class="form-group">
     <%= f.label :password %>
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>
     <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
+    <%= f.password_field :password, autocomplete: "new-password", class: "form-control", id: "exampleFormControlInput1", placeholder: "password" %>
   </div>
 
-  <div class="field">
+
+  <div class="form-group">
     <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+    <%= f.password_field :password_confirmation, autocomplete: "new-password",class: "form-control", id: "exampleFormControlInput1", placeholder: "password" %>
   </div>
-
-  <div class="field">
-    <h1>Introduction</h1>
-    <%= f.text_area :text %>
-  </div>
+  
 
   <div class="actions">
-    <%= f.submit "Sign up" %>
+    <%= f.submit "Sign up", class: "btn btn-primary btn-lg btn-block" %>
   </div>
 <% end %>
 
-<%= render "users/shared/links" %>
+<button type="button" class="btn btn-warning btn-lg">
+  <%= render "users/shared/links" %>
+</button>
