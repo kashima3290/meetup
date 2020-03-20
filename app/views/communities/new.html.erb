@@ -1,8 +1,16 @@
-<h1>新規コミュニティ作成</h1>
+<h1>New Community</h1>
 
-<%= form_with(model: @community, local: true) do |form| %>
-  <%= form.text_field :name, placeholder: "Nickname" %>
-  <%= form.text_field :image, placeholder: "Image Url" %>
-  <%= form.text_area :text, placeholder: "text" %>
-  <%= form.submit "SEND" %>
+<%= form_with(model: @community, local: true) do |f| %>
+  <h1>name</h1>
+  <%= f.text_field :name, placeholder: "Nickname" %>
+  <h1>Image</h1>
+  <%= f.label :image do %>
+    <%= f.file_field :image %>
+  <% end %>
+  <h1>introduction</h1>
+  <%= f.text_area :text, placeholder: "text" %>
+  <h1>member</h1>
+  <%= f.collection_check_boxes :user_ids, User.all, :id, :name %>
+  <h1></h1>
+  <%= f.submit "SEND" %>
 <% end %>

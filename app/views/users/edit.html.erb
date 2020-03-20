@@ -1,0 +1,14 @@
+<h1>User edit</h1>
+  <h1>Icon</h1>
+  <%= form_with(model: @user, local: true) do |f| %>
+  <%= f.file_field :image %>
+  <h1>Name</h1>
+  <%= f.text_field :name, placeholder: "name" %>
+  <h1>age</h1>
+  <%= f.select :age,  options_for_select((10..100).to_a) %>
+  <h1>gender</h1>
+  <%= f.select :gender, ["male","female","未選択"] , {include_blank: '未選択'} %>
+  <h1>Introduction</h1>
+  <%= f.text_area :text, placeholder: "text" %>
+  <%= f.submit "Update" %>
+<% end %>

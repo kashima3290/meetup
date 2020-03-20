@@ -1,0 +1,12 @@
+<div class='message'>
+  <div class='message__main'>
+    <% if part.image.present? %>
+      <h1>
+      <%= image_tag part.image.url %>
+      </h1>
+    <% end %>
+    <% if part.text.present? %>
+    <p class="message__main--text"><%= part.text %></p>
+    <% end %>
+  </div>
+</div>

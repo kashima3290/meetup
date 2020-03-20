@@ -1,0 +1,15 @@
+<div class='message'>
+  <div class='message__messanger'>
+    <%= image_tag message.user.image.url, class: "message-icon" %>
+    <p><%= message.user.name %></p>
+    <p class="date"><%= message.created_at.strftime("%Y/%m/%d | %H:%M") %></p>
+  </div>
+  <div class='message__main'>
+    <% if message.image.present? %>
+      <%= image_tag message.image.url %>
+    <% end %>
+    <% if message.text.present? %>
+    <p class="message__main--text"><%= message.text %></p>
+    <% end %>
+  </div>
+</div>

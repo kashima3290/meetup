@@ -1,26 +1,28 @@
-<h2>Log in</h2>
+<h2 class ="h2 sign bg-warning pt-3 pb-3">Log in</h2>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", type:"email", class: "form-control", id: "exampleFormControlInput1", placeholder: "name@example.com", placeholder: "Icon select" %>
   </div>
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
+  <div class="form-group">
+    <%= f.label :password %>
+    <%= f.password_field :password, autocomplete: "current-password", class: "form-control", id: "exampleFormControlInput1", placeholder: "password" %>
   </div>
 
   <% if devise_mapping.rememberable? %>
-    <div class="field">
+    <div class="field ml-5">
       <%= f.check_box :remember_me %>
       <%= f.label :remember_me %>
     </div>
   <% end %>
 
   <div class="actions">
-    <%= f.submit "Log in" %>
+    <%= f.submit "Log in", class: "btn border btn-lg btn-block bg-primary text-light" %>
   </div>
 <% end %>
 
+<button type="button" class="border m-3 bg-dark">
 <%= render "users/shared/links" %>
+</button>
