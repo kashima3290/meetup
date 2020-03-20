@@ -11,14 +11,14 @@
     </div>
     <div class='message__form fixed-bottom'>
       <div class='message__form--box'>
-        <%= form_with class: 'form-box', model: [@community, @message] do |f| %>
+        <%= form_with class: 'form-box', id: 'sending', method: 'post', model: [@community, @message] do |f| %>
           <%= f.text_field :text, class: 'f-text', placeholder: 'text' %>
             <div class='btns'>
             <%= f.label :image, class: 'add-option' do %>
               <i class="fab fa-delicious"></i>
               <%= f.file_field :image, class: 'file' %>
             <% end %>
-            <%= f.button type: 'submit', class: 'form-btn' do %>
+            <%= f.button type: 'submit', class: 'form-btn',method: "post" do %>
               <i class="fas fa-upload"></i>
               <%= f.submit class: 'secret-btn' %>
             <% end %>

@@ -9,7 +9,11 @@ class MessagesController < ApplicationController
   def create
     @message = @community.messages.new(message_params)
     if @message.save
-      redirect_to community_messages_path(@community)
+      respond_to do |format|
+        format.json
+      end
+      # railsでの機能
+      # redirect_to community_messages_path(@community)
     else
       @messages = @community.messages.includes(:user)
       redirect_to community_messages_path(@community)
