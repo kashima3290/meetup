@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
   devise_for :users
   root 'users#show'
+  namespace :communities do
+    resources :searches, only: :index
+  end
   resources :users, only: [:edit, :update, :show]
   resources :communities do
     resources :messages, only: [:index, :create]

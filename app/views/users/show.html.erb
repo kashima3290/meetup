@@ -17,6 +17,11 @@
     <%= link_to 'Plan', community_parts_path(community.id), class: "btn bg-link text-dark border" %>
     </div>
     <p class="card-text text-dark">
+    <% community.tag_list.each do |tag| %>
+        <p class="card-text text-secondary">
+        #<span><%= tag %></span>
+        </p>
+      <% end %>
     </p>
   </div>
 </div>

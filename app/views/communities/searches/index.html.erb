@@ -8,7 +8,7 @@
     <%= link_to "", root_path(current_user.id), class: "fas fa-users" %>
     <%= link_to "", new_community_path, class: "fas fa-user-plus" %>
     <%= link_to "", community_boards_path, class: "far fa-comment-alt" %>
-    <%= form_with url: communities_searches_path, method: "get" do |f| %>
+    <%= form_with url: communities_searches_path, method: 'get' do |f| %>
       <%= f.text_field :keyword, class: "search-box ml-5" %>
       <%= f.button "",class: "text-light bg-success fas fa-search search-btn" %>
     <% end %>
@@ -39,5 +39,3 @@
     </div>
   </div>
 <% end %>
-
-

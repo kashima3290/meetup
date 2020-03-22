@@ -10,5 +10,6 @@
   <%= f.select :gender, ["male","female","未選択"] , {include_blank: '未選択'} %>
   <h1>Introduction</h1>
   <%= f.text_area :text, placeholder: "text" %>
-  <%= f.submit "Update" %>
+  <%= f.submit "Update", class: "btn bg-primary text-light" %>
+  <%= link_to "logout", destroy_user_session_path, method: :delete, class: 'btn bg-danger' %>
 <% end %>

@@ -2,7 +2,7 @@ class CommunitiesController < ApplicationController
   before_action :move_to_index, expect: [:index, :show]
 
   def index
-    @communities = Community.all
+    @communities = Community.all.order(created_at: :desc)
   end
 
   def new
@@ -39,12 +39,9 @@ class CommunitiesController < ApplicationController
     @community = Community.find(params[:id])
   end
 
-  def chat
-  end
-
   private
   def community_params
-    params.require(:community).permit(:name, :image, :text, user_ids: [])
+    params.require(:community).permit(:name, :image, :text, :tag_list, user_ids: [])
   end
 
   def move_to_index
