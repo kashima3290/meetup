@@ -7,7 +7,9 @@ Rails.application.routes.draw do
     namespace :api do
       resources :messages, only: :index, defaults: { format: 'json' }
     end
-    resources :boards, only: [:index, :new, :edit, :create, :show, :destroy]
-    resources :parts, only: [:index, :create, :destroy]
+    resources :parts, only: [:index, :new, :create]
+  end
+  resource :community do
+    resources :boards, only: [:index, :new, :edit, :create, :destroy, :update]
   end
 end

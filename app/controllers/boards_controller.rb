@@ -1,54 +1,52 @@
 class BoardsController < ApplicationController
-  before_action :set_community, only: [:new, :create]
-  # before_action :set_part, only: :create
 
   def index
     @boards = Board.all
-    # @parts = Part.all
+    @community = Community.all
   end
 
   def new
     @board = Board.new
-    @message = Message.new
-    @messages = @community.messages.includes(:user)
-    # @parts = Part.all
-    # @part = Part.where(community: @community_id)
+    @board.users << current_user
+    @community = Community.find(params[:community_id])
   end
 
   def  create
-    # @parts = Part.all
-    @board = Board.create(board_params)
+    @community = Community.find(params[:community_id])
+    @board = Board.new(board_params)
     if @board.save
       redirect_to community_boards_path
     else
-      redirect_to new_community_board_path
+      render :new
     end
   end
 
   def edit
+    @board = Board.where(params[:community_id])
   end
 
-  def show
+  def update
+    @board = Board.find(params[:id])
+    if @board.update(board_params)
+      redirect_to community_boards_path
+    else
+      render :edit
+    end
   end
 
   def destroy
+    board = Board.find(params[:id])
+    board.destroy
   end
 
   private
 
   def board_params
-    params.permit(:image, :text)
+    params.permit(:image, :text, :community_id, user_ids: [])
   end
 
   def set_community
     @community = Community.find(params[:community_id])
   end
 
-  # def set_part
-  #   # @part = Part.find(params[:part.id])
-  # end
-
-  def part_params
-    params.require(:part).permit(:text, :image)
-  end
 end

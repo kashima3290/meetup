@@ -1,5 +1,9 @@
 <%= render 'communities/header' %>
 <h1>Myacount</h1>
+<% if current_user.image.present? %>
+    <%= image_tag current_user.image.url, class: "user-icon" %>
+<% end %>
+
 <p>
   <%= current_user.name %>
 </p>

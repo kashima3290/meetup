@@ -1,0 +1,22 @@
+<header class= "sticky-top text-center">
+  <%= image_tag current_user.image.url, class: "user-icon" %>
+  <h1><%= current_user.name %></h1>
+  <div class="icon-box">
+    <%= link_to "", community_parts_path, class: "fas fa-reply" %>
+  </div>
+  </div>
+</header>
+
+<%= form_with url: community_parts_path do |f| %>
+  <h1>予定日</h1>
+  <%= f.date_field :schedule %>
+  <h1>タイトル</h1>
+  <%= f.text_field :title %>
+  <h1>TEXT</h1>
+  <%= f.text_area :text, placeholder: "text" %>
+  <h1>画像</h1>
+  <%= f.label :image do %>
+    <%= f.file_field :image %>
+  <% end %>
+  <%= f.submit "OK" %>
+<% end %>

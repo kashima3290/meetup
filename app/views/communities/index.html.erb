@@ -2,7 +2,7 @@
 
 <% current_user.communities.each do |community| %>
 
-<div class="card bg-light text-white community-card">
+<div class="card bg-light text-white community-card w-75 mx-auto mt-1 mb-1">
   <% if community.image.present? %>
     <%= image_tag community.image.url, class: "card-img-top" %>
   <% end %>
@@ -10,13 +10,13 @@
     <h5 class="card-title text-dark h2"><%= community.name %></h5>
     <p class="card-text text-dark"><%= community.text %></p>
     <div class='community-card-btns'>
-    <%= link_to 'edit', edit_community_path(community.id), class: "btn bg-link text-dark border" %> 
-    <%= link_to 'show', community_path(community.id) ,class: "btn bg-link text-dark border"%>
-    <%= link_to 'INTO CHAT', community_messages_path(community.id), class: "btn bg-link text-dark border" %>
-    <%= link_to 'NEW  BOARDS', new_community_board_path(community.id), class: "btn bg-link text-dark border" %>
+    <%= link_to 'Edit', edit_community_path(community.id), class: "btn bg-link text-dark border" %> 
+    <%= link_to 'Show', community_path(community.id) ,class: "btn bg-link text-dark border"%>
+    <%= link_to 'Chat', community_messages_path(community.id), class: "btn bg-link text-dark border" %>
+    <%= link_to 'New  Board', new_community_board_path(community.id), class: "btn bg-link text-dark border" %>
+    <%= link_to 'Plan', community_parts_path(community.id), class: "btn bg-link text-dark border" %>
     </div>
     <p class="card-text text-dark">
-    users
     </p>
   </div>
 </div>

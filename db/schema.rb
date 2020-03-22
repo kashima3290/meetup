@@ -57,7 +57,8 @@ ActiveRecord::Schema.define(version: 2020_03_17_115824) do
   create_table "parts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "user_id"
     t.integer "community_id"
-    t.integer "boards_id"
+    t.string "schedule"
+    t.string "title"
     t.string "text"
     t.string "image"
     t.datetime "created_at", null: false

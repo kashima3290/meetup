@@ -2,7 +2,7 @@ class CommunitiesController < ApplicationController
   before_action :move_to_index, expect: [:index, :show]
 
   def index
-    @communities = Community.includes(:user)
+    @communities = Community.includes(:user).order(created_at: :desc)
   end
 
   def new

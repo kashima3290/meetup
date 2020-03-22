@@ -4,6 +4,12 @@
   <% if @community.image.present? %>
     <%= image_tag @community.image.url, class: "community-icon" %>
   <% end %>
+  <h1 class="mt-4">Member</h1>
+  <% @community.users.each do |user| %>
+    <h1 class="mt-3 text-warning">
+    <%= user.name %>
+    </h1>
+  <% end %>
   </div>
   <div class='message-main'>
     <div class='messages'>

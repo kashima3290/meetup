@@ -1,5 +1,6 @@
 *{
   box-sizing: border-box;
+  font-family: 'Vollkorn', serif;
 }
 html, body {
   height: 100%;
@@ -76,9 +77,9 @@ header{
     width: 100%;
     display: block;
     margin-bottom: 7%;
+    margin-left: 22%;
     .messages {
       overflow: scroll;
-      margin-left: 23%;
       background-color: white;
       height: 100%;
       width: 100%;
@@ -160,7 +161,7 @@ header{
   display: flex;
   justify-content: flex-end;
   .btn {
-    margin-right: 20px;
+    margin-right: 5px;
   }
 }
 
