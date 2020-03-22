@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
-  root 'communities#index'
+  root 'users#show'
   resources :users, only: [:edit, :update, :show]
   resources :communities do
     resources :messages, only: [:index, :create]

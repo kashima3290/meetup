@@ -1,20 +1,23 @@
-<%= render 'communities/header' %>
-<h1>Myacount</h1>
-<% if current_user.image.present? %>
-    <%= image_tag current_user.image.url, class: "user-icon" %>
-<% end %>
+<%= render "communities/header" %>
 
-<p>
-  <%= current_user.name %>
-</p>
-<p>
-  <%= current_user.gender %>
-</p>
-<p>
-  <%= current_user.email %>
-</p>
-<p>
-  <%= current_user.text %>
-</p>
-<%= link_to "編集", edit_user_path(current_user), class: "fas fa-user" %>
-<%= link_to "logout", destroy_user_session_path, method: :delete, class: 'btn' %>
+<% current_user.communities.each do |community| %>
+
+<div class="card bg-light text-white community-card w-75 mx-auto mt-1 mb-1">
+  <% if community.image.present? %>
+    <%= image_tag community.image.url, class: "card-img-top" %>
+  <% end %>
+  <div class="card-img-overlay">
+    <h5 class="card-title text-dark h2"><%= community.name %></h5>
+    <p class="card-text text-dark"><%= community.text %></p>
+    <div class='community-card-btns'>
+    <%= link_to 'Edit', edit_community_path(community.id), class: "btn bg-link text-dark border" %> 
+    <%= link_to 'Show', community_path(community.id) ,class: "btn bg-link text-dark border"%>
+    <%= link_to 'Chat', community_messages_path(community.id), class: "btn bg-link text-dark border" %>
+    <%= link_to 'New  Board', new_community_board_path(community.id), class: "btn bg-link text-dark border" %>
+    <%= link_to 'Plan', community_parts_path(community.id), class: "btn bg-link text-dark border" %>
+    </div>
+    <p class="card-text text-dark">
+    </p>
+  </div>
+</div>
+<% end %>

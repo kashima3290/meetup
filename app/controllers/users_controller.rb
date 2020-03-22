@@ -13,6 +13,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    @communities = Community.includes(:user).order(created_at: :desc)
   end
 
   private 

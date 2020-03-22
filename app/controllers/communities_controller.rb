@@ -2,7 +2,7 @@ class CommunitiesController < ApplicationController
   before_action :move_to_index, expect: [:index, :show]
 
   def index
-    @communities = Community.includes(:user).order(created_at: :desc)
+    @communities = Community.all
   end
 
   def new
@@ -18,14 +18,14 @@ class CommunitiesController < ApplicationController
       render :new
     end
   end
-
+  
   def destroy
   end
-
+  
   def edit
     @community = Community.find(params[:id])
   end
-
+  
   def update
     community = Community.find(params[:id])
     if community.update(community_params)
@@ -34,7 +34,7 @@ class CommunitiesController < ApplicationController
       render :edit
     end
   end
-
+  
   def show
     @community = Community.find(params[:id])
   end
