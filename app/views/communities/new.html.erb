@@ -1,16 +1,23 @@
-<h1>New Community</h1>
-
+<%= render "header" %>
 <%= form_with(model: @community, local: true) do |f| %>
-  <h1>name</h1>
-  <%= f.text_field :name, placeholder: "Nickname" %>
-  <h1>Image</h1>
+<div class="form-group w-75 mx-auto">
+  <h1 class="h2 text-center m-3">新規コミュニティ</h1>
+  <h1>コミュニティ名</h1>
+  <%= f.text_field :name, class: "form-control" %>
+  <h1>アイコン</h1>
   <%= f.label :image do %>
     <%= f.file_field :image %>
   <% end %>
-  <h1>introduction</h1>
-  <%= f.text_area :text, placeholder: "text" %>
-  <h1>member</h1>
+  <div class="form-group">
+    <label for="exampleFormControlTextarea1">Introduction</label>
+    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+  </div>
+  <h1>メンバー</h1>
   <%= f.collection_check_boxes :user_ids, User.all, :id, :name %>
-  <h1></h1>
-  <%= f.submit "SEND" %>
+  <div class="form-group">
+    <label for="exampleFormControlTextarea1">タグ（　,で区切りを入れてください）</label>
+    <%= f.text_field :tag_list, placeholder: "tag, ~", class: "form-control" %>
+  </div>
+  <%= f.button "作成",class: "mt-5 text-light bg-success btn w-50 mx-auto" %>
+</div>
 <% end %>

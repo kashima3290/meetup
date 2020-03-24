@@ -1,0 +1,41 @@
+<header class= "sticky-top text-center">
+  <% if current_user.image.present? %>
+    <%= image_tag current_user.image.url, class: "user-icon" %>
+  <% end %>
+  <h1><%= current_user.name %></h1>
+  <div class="icon-box">
+    <%= link_to "", edit_user_path(current_user), class: "fas fa-user" %>
+    <%= link_to "", root_path(current_user.id), class: "fas fa-users" %>
+    <%= link_to "", new_community_path, class: "fas fa-user-plus" %>
+    <%= link_to "", community_boards_path, class: "far fa-comment-alt" %>
+    <%= form_with url: communities_searches_path, method: 'get' do |f| %>
+      <%= f.text_field :keyword, class: "search-box ml-5" %>
+      <%= f.button "",class: "text-light bg-success fas fa-search search-btn" %>
+    <% end %>
+  </div>
+</header>
+
+<% @communities.each do |community| %>
+
+<div class="card bg-light text-white community-card w-75 mx-auto mt-1 mb-1">
+  <% if community.image.present? %>
+    <%= image_tag community.image.url, class: "card-img-top" %>
+  <% end %>
+  <div class="card-img-overlay">
+    <h5 class="card-title text-dark h2"><%= community.name %></h5>
+    <p class="card-text text-dark"><%= community.text %></p>
+    <div class='community-card-btns'>
+    <%= link_to 'Edit', edit_community_path(community.id), class: "btn bg-link text-dark border" %> 
+    <%= link_to 'Show', community_path(community.id) ,class: "btn bg-link text-dark border"%>
+    <%= link_to 'Chat', community_messages_path(community.id), class: "btn bg-link text-dark border" %>
+    <%= link_to 'New  Board', new_community_board_path(community.id), class: "btn bg-link text-dark border" %>
+    <%= link_to 'Plan', community_parts_path(community.id), class: "btn bg-link text-dark border" %>
+    </div>
+      <% community.tag_list.each do |tag| %>
+        <p class="card-text text-secondary">
+        #<span><%= tag %></span>
+        </p>
+      <% end %>
+    </div>
+  </div>
+<% end %>

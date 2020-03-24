@@ -1,11 +1,11 @@
 class PartsController < ApplicationController
   before_action :set_community
-
-
   def index
-    @part = Part.new
-    @parts = Part.all
-    # @parts = @community.parts.include(:user)
+    @parts = @community.parts.includes(:user).order(created_at: :desc)
+  end
+
+  def new
+    @part = @community.parts.new(part_params)
   end
 
   def create
@@ -13,13 +13,13 @@ class PartsController < ApplicationController
     if @part.save
       redirect_to community_parts_path(@community)
     else
-      render :index
+      render :new
     end
   end
 
   private
   def part_params
-    params.require(:part).permit(:text, :image).merge(user_id: current_user.id)
+    params.permit(:schedule, :text, :image, :title).merge(user_id: current_user.id)
   end
 
   def set_community

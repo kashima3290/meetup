@@ -1,12 +1,14 @@
 <%= render 'header' %>
-<h1>edit</h1>
-  <h1>Icon</h1>
+<h1>編集</h1>
+  <h1>アイコン</h1>
 <%= form_with(model: @community, local: true) do |f| %>
   <%= f.file_field :image, placeholder: "image" %>
-  <h1>Community Name</h1>
+  <h1>コミュニティ名</h1>
   <%= f.text_field :name, placeholder: "name" %>
   <h1>Introduction</h1>
   <%= f.text_area :text, placeholder: "text" %>
   <%= f.collection_check_boxes :user_ids, User.all, :id, :name %>
+  <h1>タグ</h1>
+  <%= f.text_field :tag_list, placeholder: "tag" %>
   <%= f.submit "SEND" %>
 <% end %>

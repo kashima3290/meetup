@@ -1,5 +1,9 @@
 class UsersController < ApplicationController
 
+  def index
+    @communities = Community.includes(:user).order(created_at: :desc)
+  end
+
   def edit
     @user = User.find(params[:id])
   end
@@ -13,6 +17,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    @user = User.find(params[:id])
   end
 
   private 

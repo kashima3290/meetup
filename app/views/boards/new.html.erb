@@ -2,13 +2,8 @@
   <%= image_tag current_user.image.url, class: "user-icon" %>
   <h1><%= current_user.name %></h1>
   <div class="icon-box">
-    <%= link_to "", root_path, class: "fas fa-backspace" %>
+    <%= link_to "", root_path, class: "fas fa-reply" %>
     <%= link_to "", community_messages_path, class: "far fa-comment-dots" %>
-    <%= form_with class: 'form-box', url: community_boards_path do |b| %>
-      <%= b.button type: 'submit', class: 'form-btn-board btn bg-light text-primary border ml-5' do %>
-        create
-      <% end %>
-    <% end %>
   </div>
   </div>
 </header>
@@ -20,6 +15,12 @@
   <% end %>
   </div>
   <div class='message-main'>
-  
+    <%= form_with class: 'form-box', url: community_boards_path do |board| %>
+      <%= board.file_field :image %>
+      <h1></h1>
+      <%= board.text_area :text %>
+      <%= board.collection_check_boxes :user_ids, CommunityUser.where(community_id: @community.id), :user_id, :community_id %>
+      <%= board.submit "create", class: 'form-btn-board btn bg-light text-primary border ml-5', placeholder: 'create' %>
+    <% end %>
   </div>
 </div>

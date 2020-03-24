@@ -1,16 +1,15 @@
-<%= render 'communities/header' %>
-<h1>Myacount</h1>
-<p>
-  <%= current_user.name %>
-</p>
-<p>
-  <%= current_user.gender %>
-</p>
-<p>
-  <%= current_user.email %>
-</p>
-<p>
-  <%= current_user.text %>
-</p>
-<%= link_to "編集", edit_user_path(current_user), class: "fas fa-user" %>
-<%= link_to "logout", destroy_user_session_path, method: :delete, class: 'btn' %>
+<%= render "communities/header" %>
+<div class="form-group w-75 mx-auto">
+  <% if @user.image.present? %>
+    <%= image_tag @user.image.url, class: "user-show-icon mt-2" %>
+  <% end %>
+  <i class="h2 mr-5 mt-3"><%= @user.name %></i>
+  <h1 class="p-2 h4">年齢：　<%= @user.age %></h1>
+  <h1 class="p-2 h4">性別：　<%= @user.gender %></h1>
+  <h1 class="p-2 border"><%= @user.text %></h1>
+  <div class="form-group">
+  </div>
+  <% if @user.id == current_user.id %>
+  <%= link_to "設定", edit_user_path(current_user), class: "btn border bg-success text-light" %>
+  <% end %>
+</div>

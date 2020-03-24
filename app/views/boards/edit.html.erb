@@ -1,0 +1,11 @@
+<%= render 'communities/header' %>
+<h1>edit</h1>
+  <h1>Icon</h1>
+<% form_with url: community_board_path do |f| %>
+<% @board.each do |b| %>
+  <%= b.file_field :image, placeholder: "image" %>
+  <h1>Community Name</h1>
+  <%= f.text_area :text, placeholder: "text" %>
+  <%= f.submit "add" %>
+<% end %>
+<% end %>
