@@ -8,7 +8,7 @@ class Community < ApplicationRecord
   
   def self.search(search)
     if search
-      Community.where('name LIKE(?)', "%#{search}%")
+      Community.where('name LIKE(?)', "%#{search}%") 
     else
       Community.all
     end

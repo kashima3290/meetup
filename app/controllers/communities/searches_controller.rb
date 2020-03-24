@@ -1,5 +1,5 @@
 class Communities::SearchesController < ApplicationController
   def index
-    @communities = Community.search(params[:keyword]).order(created_at: :desc)
+    @communities = Community.tagged_with(params[:keyword], :wild => true, :any => true) | Community.search(params[:keyword])
   end
 end

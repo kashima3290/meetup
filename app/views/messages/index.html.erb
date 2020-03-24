@@ -7,7 +7,7 @@
   <h1 class="mt-4">Member</h1>
   <% @community.users.each do |user| %>
     <h1 class="mt-3 text-warning">
-    <%= user.name %>
+    <%= link_to "#{user.name}", user_path(user.id), class: "text-warning" %>
     </h1>
   <% end %>
   </div>

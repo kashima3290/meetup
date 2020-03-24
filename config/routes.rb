@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
   devise_for :users
-  root 'users#show'
+  root 'users#index'
   namespace :communities do
     resources :searches, only: :index
   end
-  resources :users, only: [:edit, :update, :show]
+  resources :users, only: [:index, :show, :edit, :update]
   resources :communities do
     resources :messages, only: [:index, :create]
     namespace :api do

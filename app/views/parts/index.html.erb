@@ -8,21 +8,26 @@
     <%= link_to "", root_path(current_user.id), class: "fas fa-users" %>
     <%= link_to "", new_community_path, class: "fas fa-user-plus" %>
     <%= link_to "", community_boards_path(current_user.id), class: "far fa-comment-alt" %>
-    <%= link_to "New Plan", new_community_part_path, class: "fas fa-plus bg-success text-light p-2 rounded-pill border" %>
+    <%= link_to "メッセージ", new_community_part_path, class: "fas fa-plus bg-success text-light p-2 rounded-pill border" %>
   </div>
 </header>
 
+
 <% @parts.each do |part| %>
-<div class="card border-secondary mt-2 w-75 mx-auto">
-  <div class="card-header">
-  <p class="h3">Title: <%= part.title %></p>
-  <p class="h5 text-secondary"><%= part.schedule %></p>
+<div class="card bg-light text-white community-card w-50 mx-auto mt-1 mb-1">
+  <div class='request-box'>
+  <%= image_tag part.user.image.url, class: "participation-icon" %>
+    <div class='request-text'>
+      <h5 class="text-secondary">＜<%= part.user.name %></h5>
+      <p class="text-dark ml-4 h5"><%= part.text %></p>
+      <% if part.image.present? %>
+        <%= image_tag part.image.url, class: "h-75 w-75" %>
+      <% end %>
+    </div>
+    <div class='community-card-btns'>
+    </div>
   </div>
-  <div class="card-body text-secondary">
-    <% if part.image.present? %>
-      <%= image_tag part.image.url, class: "h-50 w-50" %>
-    <% end %>
-    <p class="card-text text-dark"><%= part.text %></p>
   </div>
-</div>
 <% end %>
+
+

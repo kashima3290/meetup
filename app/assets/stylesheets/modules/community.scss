@@ -58,6 +58,16 @@ header{
   height: 100px;
   border-radius: 20%;
 }
+.participation-icon {
+  border-radius: 50%;
+  width: 70px;
+  height: 70px;
+}
+.user-show-icon {
+  border-radius: 50%;
+  height: 200px;
+  width: 200px;
+}
 
 
 // message_index
@@ -181,4 +191,20 @@ header{
   margin-left: 0;
   height: 30px;
   border-radius: 5px;
+}
+
+// request
+
+.request-box{
+  display: flex;
+}
+
+// link
+.chat-link a {
+  color: black;
+}
+.chat-link a:hover {
+  // background-color: green;
+  text-decoration: none;
+  color: greenyellow;
 }

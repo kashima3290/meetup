@@ -1,7 +1,7 @@
 <div class='message' data-message-id=<%= message.id %>>
   <div class='message__messanger'>
     <%= image_tag message.user.image.url, class: "message-icon" %>
-    <p><%= message.user.name %></p>
+    <%= link_to " #{message.user.name}", user_path(message.user.id), class: "text-dark h5 fas fa-angle-left" %>
     <p class="date"><%= message.created_at.strftime("%Y/%m/%d | %H:%M") %></p>
   </div>
   <div class='message__main'>
