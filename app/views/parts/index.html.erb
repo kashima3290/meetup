@@ -7,7 +7,7 @@
     <%= link_to "", user_path(current_user.id), class: "fas fa-user" %>
     <%= link_to "", root_path(current_user.id), class: "fas fa-users" %>
     <%= link_to "", new_community_path, class: "fas fa-user-plus" %>
-    <%= link_to "", community_boards_path(current_user.id), class: "far fa-comment-alt" %>
+    <%= link_to "", boards_path(current_user.id), class: "far fa-comment-alt" %>
     <%= link_to "メッセージ", new_community_part_path, class: "fas fa-plus bg-success text-light p-2 rounded-pill border" %>
   </div>
 </header>

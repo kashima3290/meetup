@@ -7,9 +7,9 @@
     <%= link_to "", user_path(current_user), class: "fas fa-user" %>
     <%= link_to "", root_path(current_user.id), class: "fas fa-users" %>
     <%= link_to "", new_community_path, class: "fas fa-user-plus" %>
-    <%= link_to "", communities_boards_path, class: "fas fa-id-card-alt" %>
+    <%= link_to "", boards_path, class: "fas fa-id-card-alt" %>
     <%= form_with url: communities_searches_path, method: "get" do |f| %>
-      <%= f.text_field :keyword, class: "search-box ml-5", placeholder: "コミュニティ検索" %>
+      <%= f.text_field :keyword, class: "search-box ml-5", placeholder: "Search" %>
       <%= f.button "",class: "text-light bg-success fas fa-search search-btn" %>
     <% end %>
   </div>
@@ -34,11 +34,11 @@
     <div class='community-card-btns'>
     <%= link_to '', edit_community_path(community.id), class: "btn-lg text-dark fas fa-cog" %> 
     <%= link_to '', community_path(community.id) ,class: "btn-lg text-dark fas fa-clipboard-list"%>
-    <%= link_to '', new_communities_board_path,class: "btn-lg text-dark fas fa-pen-square"%>
-    <%= link_to 'リクエスト', community_parts_path(community.id), class: "btn bg-link text-dark border" %>
+    <%= link_to '', new_board_path,class: "btn-lg text-dark fas fa-pen-square"%>
+    <%= link_to 'Request', community_parts_path(community.id), class: "btn bg-link text-dark border" %>
     </div>
     <% else %>
-      <%= link_to '参加リクエスト', community_parts_path(community.id), class: "btn-lg bg-success text-light border fas fa-pray" %>
+      <%= link_to ' Add Request', community_parts_path(community.id), class: "btn-lg bg-success text-light border fas fa-pray" %>
     <% end %>
     </div>
       <% community.tag_list.each do |tag| %>

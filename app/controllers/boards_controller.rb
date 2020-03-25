@@ -1,10 +1,12 @@
 class BoardsController < ApplicationController
 
   def index
-    @community = Community.find(params[:community_id])
+    @community = Community.all
   end
 
   def new
+    @board = Board.new
+    @community = Community.includes(:user)
   end
 
 end
