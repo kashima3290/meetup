@@ -25,19 +25,19 @@
 
     <h1>コミュニティ</h1>
 
-    <% @community.users.each do |user| %>
     <div class='js-add-user' id='chat-community-users'>
       <div class='chat-community-user js-chat-member'>
-        <%= hidden_field name: "community[user_ids][]", value: user.id %>
+        <%= f.hidden_field :user_ids, name: "community[user_ids][]", value: current_user.id %>
         <p class='chat-community-user__name form-control'><%= current_user.name %></p>
       </div>
     </div>
 
+    <% @community.users.each do |user| %>
       <% if current_user.name != user.name %>
-        <div class='chat-community_user js-chat-member'>
-          <%= hidden_field name: "community[user_ids][]", value: user.id %>
-          <p class="chat-community-user__name"><%= user.name %></p>
-          <a class="float-right user-search-remove chat-group-user__btn--remove js-remove-btn">削除</a>
+        <div class='chat-community_user js-chat-member form-control'>
+          <%= f.hidden_field :user_ids, name: "community[user_ids][]", value: user.id %>
+          <a class="chat-community-user__name"><%= user.name %></a>
+          <div class="float-right user-search-remove chat-group-user__btn--remove js-remove-btn">削除</div>
         </div>
       <% end %>
     <% end %>
