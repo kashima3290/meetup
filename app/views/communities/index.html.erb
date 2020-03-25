@@ -7,7 +7,7 @@
     <%= link_to "", user_path(current_user), class: "fas fa-user" %>
     <%= link_to "", root_path(current_user.id), class: "fas fa-users" %>
     <%= link_to "", new_community_path, class: "fas fa-user-plus" %>
-    <%= link_to "", community_boards_path, class: "far fa-comment-alt" %>
+    <%= link_to "", communities_boards_path, class: "fas fa-id-card-alt" %>
     <%= form_with url: communities_searches_path, method: "get" do |f| %>
       <%= f.text_field :keyword, class: "search-box ml-5", placeholder: "コミュニティ検索" %>
       <%= f.button "",class: "text-light bg-success fas fa-search search-btn" %>
@@ -16,16 +16,28 @@
 </header>
 
 <% @communities.each do |community| %>
-
-<div class="card bg-light text-white community-card w-75 mx-auto mt-1 mb-1">
+  <div class="card bg-light text-white community-card w-75 mx-auto mt-1 mb-1">
   <% if community.image.present? %>
     <%= image_tag community.image.url, class: "card-img-top" %>
   <% end %>
   <div class="card-img-overlay">
+    <% if community.user_ids.include?(current_user.id) %>
+    <div class="chat-link">
+    <%= link_to "#{community.name}", community_messages_path(community.id), class: "bg-link card-title h2" %>
+    </div>
+    <% else %>
     <h5 class="card-title text-dark h2"><%= community.name %></h5>
+    <% end %>
     <p class="card-text text-dark"><%= community.text %></p>
     <div class='community-card-btns'>
-    <% unless community.user_ids.include?(current_user.id) %>
+    <% if community.user_ids.include?(current_user.id) %>
+    <div class='community-card-btns'>
+    <%= link_to '', edit_community_path(community.id), class: "btn-lg text-dark fas fa-cog" %> 
+    <%= link_to '', community_path(community.id) ,class: "btn-lg text-dark fas fa-clipboard-list"%>
+    <%= link_to '', new_communities_board_path,class: "btn-lg text-dark fas fa-pen-square"%>
+    <%= link_to 'リクエスト', community_parts_path(community.id), class: "btn bg-link text-dark border" %>
+    </div>
+    <% else %>
       <%= link_to '参加リクエスト', community_parts_path(community.id), class: "btn-lg bg-success text-light border fas fa-pray" %>
     <% end %>
     </div>

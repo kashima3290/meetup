@@ -22,7 +22,7 @@ Rails.application.routes.draw do
     end
     resources :parts, only: [:index, :new, :create]
   end
-  resource :community do
-    resources :boards, only: [:index, :new, :edit, :create, :destroy, :update]
+  resource :communities do
+    resources :boards 
   end
 end

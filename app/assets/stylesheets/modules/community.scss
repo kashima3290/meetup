@@ -1,6 +1,6 @@
 *{
   box-sizing: border-box;
-  font-family: 'Vollkorn', serif;
+  font-family: 'Arial Rounded MT Bold',sans-serif;
 }
 html, body {
   height: 100%;
@@ -201,11 +201,15 @@ header{
 
 // link
 .chat-link a {
-  color: black;
+  color: #00DD00;
 }
 .chat-link a:hover {
   // background-color: green;
   text-decoration: none;
-  color: greenyellow;
+  color: #00FF00;
+}
+
+.fa-door {
+  font-size: 50px;
 }
 
