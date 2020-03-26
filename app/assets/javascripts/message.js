@@ -6,7 +6,7 @@ $(function(){
       <div class='message__messanger'>
         <img src=${message.user_image} >
         <p>${message.user_name}</p>
-        <p class="date">${message.created_at}</p>
+        <a>＜ ${message.created_at}</a>
       </div>
       <div class='message__main'>
         <img src=${message.image} class="message-icon">
@@ -18,7 +18,7 @@ $(function(){
       <div class='message'>
         <div class='message__messanger'>
           <img src=${message.user_image} class="message-icon">
-          <p>${message.user_name}</p>
+          <a>＜ ${message.user_name}</a>
           <p class="date">${message.created_at}</p>
         </div>
         <div class='message__main'>
@@ -30,7 +30,7 @@ $(function(){
     <div class='message'>
       <div class='message__messanger'>
         <img src=${message.user_image} class="message-icon">
-        <p>${message.user_name}</p>
+        <a>＜ ${message.user_name}</a>
         <p class="date">${message.created_at}</p>
       </div>
       <div class='message__main'>
@@ -89,6 +89,6 @@ $(function(){
     });
   };
   if (document.location.href.match(/\/communities\/\d+\/messages/)) {
-    setInterval(reloadMessages, 3000);
+    setInterval(reloadMessages, 2500);
   }
 });

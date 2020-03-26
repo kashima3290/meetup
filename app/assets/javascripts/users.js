@@ -11,7 +11,7 @@ $(function() {
 
   function addNoUser() {
     let html = `
-    <div class='form-control w-75 position-fixed'>Not found</div>
+    <div class='form-control w-50 position-fixed'>Not found</div>
     `;
     $("#user-search-result").append(html);
   }

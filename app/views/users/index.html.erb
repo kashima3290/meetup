@@ -11,7 +11,7 @@
     <div class='community-card-btns'>
     <%= link_to '', edit_community_path(community.id), class: "btn-lg text-dark fas fa-cog" %> 
     <%= link_to '', community_path(community.id) ,class: "btn-lg text-dark fas fa-clipboard-list"%>
-    <%= link_to '', new_board_path,class: "btn-lg text-dark fas fa-pen-square"%>
+    <%= link_to '', new_community_board_path(community.id),class: "btn-lg text-dark fas fa-pen-square"%>
     <%= link_to 'Request', community_parts_path(community.id), class: "btn bg-link text-dark border" %>
     </div>
     <p class="card-text text-dark">

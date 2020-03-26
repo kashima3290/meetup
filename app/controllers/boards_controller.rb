@@ -5,8 +5,9 @@ class BoardsController < ApplicationController
   end
 
   def new
-    @board = Board.new
-    @community = Community.includes(:user)
+    @board = @community.board.new
+    @community = Community.find(params[:community_id])
+    # @community = Community.includes(:user)
   end
 
 end

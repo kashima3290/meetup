@@ -1,16 +1,4 @@
-<header class= "sticky-top text-center">
-  <% if current_user.image.present? %>
-    <%= image_tag current_user.image.url, class: "user-icon" %>
-  <% end %>
-  <h1><%= current_user.name %></h1>
-  <div class="icon-box">
-    <%= link_to "", user_path(current_user.id), class: "fas fa-user" %>
-    <%= link_to "", root_path(current_user.id), class: "fas fa-users" %>
-    <%= link_to "", new_community_path, class: "fas fa-user-plus" %>
-    <%= link_to "", boards_path, class: "far fa-comment-alt" %>
-    <%= link_to "New Board", new_board_path, class: "fas fa-plus bg-success text-light p-2 rounded-pill border" %>
-  </div>
-</header>
+<%= render "communities/header" %>
 
 <div class="card mb-3 w-75 mx-auto mt-2">
 
