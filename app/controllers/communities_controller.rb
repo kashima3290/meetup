@@ -37,6 +37,7 @@ class CommunitiesController < ApplicationController
   
   def show
     @community = Community.find(params[:id])
+    @boards = Board.where(community_id: @community.id).order(created_at: :desc)
   end
 
   private

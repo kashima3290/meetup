@@ -1,23 +1,12 @@
 <%= render "communities/header" %>
-<%= form_with url: boards_path do |f| %>
+<%= form_with url: community_boards_path do |f| %>
 <div class="form-group w-50 mx-auto">
   <h1 class="h2 text-center m-3">New Board</h1>
-  <h1>Select Community</h1>
-  <%= f.text_field :name, class: "form-control" %>
-  <h1>Icon</h1>
-  <%= f.label :image do %>
-    <%= f.file_field :image %>
-  <% end %>
-  <h1>Icon</h1>
-  <%= f.label :image do %>
-    <%= f.file_field :image %>
-  <% end %>
-  <h1>Icon</h1>
-  <%= f.label :image do %>
-    <%= f.file_field :image %>
-  <% end %>
+  <h1 class="h5">Community ： <%= @community.name %></h1>
+  <h1>Image（複数選択可能：SHIFT+SELECT）</h1>
+    <%= f.file_field :images, multiple: true %>
   <div class="form-group">
-    <h1 for="exampleFormControlTextarea1">Introduction</h1>
+    <h1 for="exampleFormControlTextarea1">text</h1>
     <%= f.text_area :text, placeholder: "text", class: "form-control" %>
   </div>
     <div class="form-group">

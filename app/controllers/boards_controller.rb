@@ -1,13 +1,33 @@
 class BoardsController < ApplicationController
 
   def index
-    @community = Community.all
+    @communitys = Community.all
+    @boards = Board.all.order(created_at: :desc)
   end
 
   def new
-    @board = @community.board.new
     @community = Community.find(params[:community_id])
-    # @community = Community.includes(:user)
+    @board = @community.boards.new(board_params)
+  end
+  
+  def create
+    @community = Community.find(params[:community_id])
+    @board = @community.boards.new(board_params)
+    if @board.save
+      redirect_to boards_path
+    else
+      render :new
+    end
+  end
+
+  def search
+    @boards = Board.tagged_with(params[:keyword], :wild => true, :any => true) | Board.search(params[:keyword])
+  end
+
+  private
+
+  def board_params
+    params.permit(:text, :tag_list, :community_id, images: []).merge(user_id: current_user.id)
   end
 
 end
