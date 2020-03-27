@@ -1,16 +1,25 @@
 <%= render "communities/header" %>
-<h1>User edit</h1>
-  <h1>Icon</h1>
-  <%= form_with(model: @user, local: true) do |f| %>
-  <%= f.file_field :image %>
+<%= form_with url: user_path do |f| %>
+<div class="form-group w-50 mx-auto">
+  <h1 class="h2 text-center m-3">Account Settings</h1>
   <h1>Name</h1>
-  <%= f.text_field :name, placeholder: "name" %>
+  <%= f.text_field :name, class: "form-control" %>
+  <h1>Icon</h1>
+  <%= f.label :image do %>
+    <%= f.file_field :image %>
+  <% end %>
   <h1>age</h1>
   <%= f.select :age,  options_for_select((10..100).to_a) %>
   <h1>gender</h1>
   <%= f.select :gender, ["male","female","未選択"] , {include_blank: '未選択'} %>
-  <h1>Introduction</h1>
-  <%= f.text_area :text, placeholder: "text" %>
-  <%= f.submit "Update", class: "btn bg-primary text-light" %>
-  <%= link_to "logout", destroy_user_session_path, method: :delete, class: 'btn bg-danger' %>
+  <div class="form-group">
+    <h1 for="exampleFormControlTextarea1">Introduction</h1>
+    <%= f.text_area :text, placeholder: "text", class: "form-control" %>
+  </div>
+
+  <%= f.button "create!",class: "mt-5 text-light bg-success btn w-100 mx-auto" %>
+  <h1></h1>
+  <%= link_to "logout", destroy_user_session_path, method: :delete, class: 'btn bg-danger w-25 mx-auto mt-5 text-light float-right' %>
+</div>
 <% end %>
+

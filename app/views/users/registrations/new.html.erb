@@ -1,4 +1,4 @@
-<h2 class ="h2 sign bg-warning pt-3 pb-3">meetup 新規登録</h2>
+<h2 class ="h2 sign bg-warning pt-3 pb-3">SignUp meetup</h2>
 
 <div class='form-group w-50 mx-auto'>
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
@@ -8,24 +8,24 @@
   </div>
 
   <div class="form-group">
-    <%= f.label :image, "アイコン" %>
+    <%= f.label :image, "Icon" %>
     <%= f.file_field :image, class: "form-control-file", id: "exampleFormControlFile1" %>
   </div>
 
   <div class="form-group">
-    <%= f.label :name, "名前" %><em>(10文字まで)</em><br />
+    <%= f.label :name, "Name" %><em>(10文字まで)</em><br />
     <%= f.text_field :name, autofocus: true, maxlength: "10", class: "form-control", id: "exampleFormControlInput1", placeholder: "name" %>
   </div>
 
 
   <div class="form-group">
-    <%= f.label :age, "年齢" %>
+    <%= f.label :age, "Age" %>
     <%= f.select :age,  options_for_select((10..100).to_a), class: "form-control",id: "exampleFormControlSelect1" %>
     </select>
   </div>
 
   <div class="form-group">
-    <%= f.label :gender, "年齢" %><br />
+    <%= f.label :gender, "Gender" %><br />
       <%= f.select :gender, ["male","female","unselected"] , {include_blank: 'unselected'} %>
   </div>
 
@@ -36,7 +36,7 @@
   
   
   <div class="form-group">
-    <%= f.label :email ,"メールアドレス"%><br />
+    <%= f.label :email ,"email address"%><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email", type:"email", class: "form-control", id: "exampleFormControlInput1", placeholder: "name@example.com" %>
   </div>
 
@@ -44,7 +44,7 @@
 
 
   <div class="form-group">
-    <%= f.label :password, "パスワード"%>
+    <%= f.label :password, "Password"%>
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %>文字以上)</em>
     <% end %><br />
@@ -53,7 +53,7 @@
 
 
   <div class="form-group">
-    <%= f.label :password_confirmation,"パスワード再入力" %><br />
+    <%= f.label :password_confirmation,"Re-enter Password" %><br />
     <%= f.password_field :password_confirmation, autocomplete: "new-password",class: "form-control", id: "exampleFormControlInput1", placeholder: "password" %>
   </div>
   

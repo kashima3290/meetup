@@ -1,7 +1,6 @@
 <%= render "communities/header" %>
 
 <% current_user.communities.each do |community| %>
-
 <div class="card bg-light text-white community-card w-75 mx-auto mt-1 mb-1">
   <% if community.image.present? %>
     <%= image_tag community.image.url, class: "card-img-top" %>
@@ -12,8 +11,8 @@
     <div class='community-card-btns'>
     <%= link_to '', edit_community_path(community.id), class: "btn-lg text-dark fas fa-cog" %> 
     <%= link_to '', community_path(community.id) ,class: "btn-lg text-dark fas fa-clipboard-list"%>
-    <%= link_to 'ボード作成', new_community_board_path(community.id), class: "btn bg-link text-dark border" %>
-    <%= link_to 'リクエスト', community_parts_path(community.id), class: "btn bg-link text-dark border" %>
+    <%= link_to '', new_community_board_path(community.id),class: "btn-lg text-dark fas fa-pen-square"%>
+    <%= link_to 'Request', community_parts_path(community.id), class: "btn bg-link text-dark border" %>
     </div>
     <p class="card-text text-dark">
     <% community.tag_list.each do |tag| %>

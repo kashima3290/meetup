@@ -1,15 +1,51 @@
-<div class="card mb-3 h-100">
+<div class="card bg-light text-white community-card w-100 mx-auto">
   <% if @community.image.present? %>
-    <%= image_tag @community.image.url, class: "h-100 w-100" %>
+    <%= image_tag @community.image.url, class: "show-community-img" %>
   <% end %>
-  <div class="card-body">
-    <h5 class="card-title"><%= @community.name %></h5>
-    <p class="card-text"><%= @community.text %></p>
-    <p class="card-text"><small class="text-muted">free text</small></p>
-    <%= link_to 'edit', edit_community_path(@community.id), class: "btn btn-success" %>
-    <%= link_to 'HOME', root_path, class: "btn btn-success" %>
-    <h1></h1>
-    <%= link_to 'INTO CHAT', community_messages_path(@community.id), class: "btn bg-primary text-light" %>
+  <div class="card-img-overlay">
+    <% if @community.user_ids.include?(current_user.id) %>
+    <div class="chat-link">
+    <%= link_to "#{@community.name}", community_messages_path(@community.id), class: "bg-link card-title h2" %>
+    </div>
+    <% else %>
+    <h5 class="h1 text-center w-100"><%= @community.name %></h5>
+    <% end %>
+    <div class='community-card-btns'>
+    <% if @community.user_ids.include?(current_user.id) %>
+    <div class='community-card-btns'>
+    <%= link_to 'Settig', edit_community_path(@community.id), class: "btn-lg text-dark  border mr-4" %> 
+    <%= link_to 'New Board', new_community_board_path(@community.id),class: "btn-lg text-dark border mr-4"%>
+    <%= link_to 'Request', community_parts_path(@community.id), class: "btn-lg bg-link text-dark border mr-4" %>
+    </div>
+    <% else %>
+      <%= link_to ' Add Request', community_parts_path(@community.id), class: "btn-lg bg-success text-light border fas fa-pray" %>
+    <% end %>
+    </div>
+    <div class='community-show-main float-right m-3'>
+      <% @community.tag_list.each do |tag| %>
+        <p class="card-text text-secondary w-100">
+         #<%= tag %>
+        </p>
+      <% end %>
+    <i class="text-dark fas h5 mt-5"></i>
+    <% @community.users.each do |user| %>
+    <i class="mr-3 text-warning h5">
+      <%= image_tag user.image.url, class: "show-user-icon" %>
+      <%= link_to "#{user.name}", user_path(user.id), class: "text-warning" %>
+    </i>
+  <% end %>
+    <p class="text-dark h3 mt-5"><%= @community.text %></p>
+    </div>
+    </div>
+  </div>
+
+  <div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-4">Community Boards</h1>
+    <p class="lead"></p>
   </div>
 </div>
+
+  <%= render "boards/board" %>
+
 

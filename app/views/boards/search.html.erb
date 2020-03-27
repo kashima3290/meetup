@@ -1,0 +1,18 @@
+<header class= "sticky-top text-center">
+  <% if current_user.image.present? %>
+    <%= image_tag current_user.image.url, class: "user-icon" %>
+  <% end %>
+  <h1><%= link_to "#{current_user.name}", edit_user_path(current_user.id), class: "text-dark" %></h1>
+  <div class="icon-box">
+    <%= link_to "", user_path(current_user), class: "fas fa-user" %>
+    <%= link_to "", root_path(current_user.id), class: "fas fa-users" %>
+    <%= link_to "", new_community_path, class: "fas fa-user-plus" %>
+    <%= link_to "", communities_path, class: "fas fa-search" %>
+    <%= form_with url: search_board_path, method: "get" do |f| %>
+      <%= f.text_field :keyword, class: "search-box ml-5", placeholder: "Search" %>
+      <%= f.button "",class: "text-light bg-success fas fa-search search-btn" %>
+    <% end %>
+  </div>
+</header>
+
+<%= render "board" %>

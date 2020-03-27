@@ -1,0 +1,47 @@
+<% @boards.each do |board| %>
+<div class="card mb-3 w-75 mx-auto mt-2">
+
+<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+  <ol class="carousel-indicators">
+    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
+  </ol>
+  <div class="carousel-inner">
+    <div class="carousel-item active" data-interval="5000">
+      <%= image_tag board.images.first.url, class: "d-block w-50 h-50 mx-auto" %>
+    </div>
+    <% board.images.drop(1).each do |image| %>
+    <div class="carousel-item" data-interval="5000">
+      <%= image_tag image.url, class: "d-block w-50 h-50 mx-auto" %>
+    </div>
+    <% end %>
+  </div>
+  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+
+  <div class="card-body">
+    <%= image_tag board.community.image.url, class: "board-community-icon" %>
+    <p class="card-title h4 fas ml-2"><%= board.community.name %></p>
+    <h1></h1>
+    <%= image_tag board.user.image.url, class: "mini-user-icon ml-3" %>
+    <p class="card-title fas ml-2 h4"><%= board.user.name %></p>
+    <%= link_to "Details", board_path(board.id), class: "btn border float-right" %>
+    <p class="card-text h4"><%= board.text %><p>
+    <p class="card-text text-secondary">
+      <% board.tag_list.each do |tag| %>
+        #<span><%= tag %></span>
+      <% end %><p>
+    <p class="card-text"><small class="text-muted"><%= board.created_at.strftime("%Y/%m/%d | %H:%M") %></p>
+  </div>
+</div>
+<% end %>

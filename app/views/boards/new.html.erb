@@ -1,26 +1,19 @@
-<header class= "sticky-top text-center">
-  <%= image_tag current_user.image.url, class: "user-icon" %>
-  <h1><%= current_user.name %></h1>
-  <div class="icon-box">
-    <%= link_to "", root_path, class: "fas fa-reply" %>
-    <%= link_to "", community_messages_path, class: "far fa-comment-dots" %>
+<%= render "communities/header" %>
+<%= form_with url: community_boards_path do |f| %>
+<div class="form-group w-50 mx-auto">
+  <h1 class="h2 text-center m-3">New Board</h1>
+  <h1 class="h5">Community ： <%= @community.name %></h1>
+  <h1>Image（複数選択可能：SHIFT+SELECT）</h1>
+    <%= f.file_field :images, multiple: true %>
+  <div class="form-group">
+    <h1 for="exampleFormControlTextarea1">text</h1>
+    <%= f.text_area :text, placeholder: "text", class: "form-control" %>
   </div>
-  </div>
-</header>
+    <div class="form-group">
+      <label for="exampleFormControlTextarea1">Tags（　,で区切りを入れてください）</label>
+      <%= f.text_field :tag_list, placeholder: "tag, ~", class: "form-control" %>
+    </div>
 
-<div class="message-index">
-  <div class='side'>
-  <% if @community.image.present? %>
-    <%= image_tag @community.image.url, class: "community-icon" %>
-  <% end %>
-  </div>
-  <div class='message-main'>
-    <%= form_with class: 'form-box', url: community_boards_path do |board| %>
-      <%= board.file_field :image %>
-      <h1></h1>
-      <%= board.text_area :text %>
-      <%= board.collection_check_boxes :user_ids, CommunityUser.where(community_id: @community.id), :user_id, :community_id %>
-      <%= board.submit "create", class: 'form-btn-board btn bg-light text-primary border ml-5', placeholder: 'create' %>
-    <% end %>
-  </div>
+  <%= f.button "create!",class: "mt-5 text-light bg-success btn w-25 mx-auto" %>
 </div>
+<% end %>

@@ -21,8 +21,12 @@ Rails.application.routes.draw do
       resources :messages, only: :index, defaults: { format: 'json' }
     end
     resources :parts, only: [:index, :new, :create]
+    resources :boards, only: [:new, :create]
   end
-  resource :community do
-    resources :boards, only: [:index, :new, :edit, :create, :destroy, :update]
+  resources :boards, only: [:index, :show, :edit] do
+    member do
+      get 'search'
+    end
+    resources :comments, only: :create
   end
 end

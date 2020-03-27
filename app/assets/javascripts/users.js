@@ -3,7 +3,7 @@ $(function() {
     let html = `
     <div class="chat-group-user form-control">
         <a class="chat-group-user__name">${user.name}</a>
-        <div class="float-right user-search-add chat-group-user__btn chat-group-user__btn--add" data-user-id="${user.id}" data-user-name="${user.name}">追加</div>
+        <div class="float-right user-search-add chat-group-user__btn chat-group-user__btn--add" data-user-id="${user.id}" data-user-name="${user.name}">➕</div>
     </div>
     `;
     $("#user-search-result").append(html);
@@ -11,7 +11,7 @@ $(function() {
 
   function addNoUser() {
     let html = `
-    <div class='form-control w-75 position-fixed'>ユーザーが見つかりません</div>
+    <div class='form-control w-50 position-fixed'>Not found</div>
     `;
     $("#user-search-result").append(html);
   }
@@ -20,7 +20,7 @@ $(function() {
     let html = `
     <div class="chat-group-user clearfix form-control" id="${id}">
       <a class="chat-group-user__name">${name}</a>
-      <div class="user-search-remove chat-group-user__btn chat-group-user__btn--remove js-remove-btn float-right" data-user-id="${id}" data-user-name="${name}">削除</div>
+      <div class="user-search-remove chat-group-user__btn chat-group-user__btn--remove js-remove-btn float-right" data-user-id="${id}" data-user-name="${name}">✖︎</div>
     </div>
     `;
     $(".js-add-user").append(html);

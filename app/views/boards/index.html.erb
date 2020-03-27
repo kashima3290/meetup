@@ -1,29 +1,18 @@
-<%= render 'communities/header' %>
-
-<% @boards.each do |board| %>
-
-<% if board.image.present? %>
-  <div class='mx-auto'>
-      <%=image_tag board.image.url class: "d-block mx-auto" %>
+<header class= "sticky-top text-center">
+  <% if current_user.image.present? %>
+    <%= image_tag current_user.image.url, class: "user-icon" %>
+  <% end %>
+  <h1><%= link_to "#{current_user.name}", edit_user_path(current_user.id), class: "text-dark" %></h1>
+  <div class="icon-box">
+    <%= link_to "", user_path(current_user), class: "fas fa-user" %>
+    <%= link_to "", root_path(current_user.id), class: "fas fa-users" %>
+    <%= link_to "", new_community_path, class: "fas fa-user-plus" %>
+    <%= link_to "", communities_path, class: "fas fa-search" %>
+    <%= form_with url: search_board_path(@boards.ids), method: "get" do |f| %>
+      <%= f.text_field :keyword, class: "search-box ml-5", placeholder: "Search" %>
+      <%= f.button "",class: "text-light bg-success fas fa-search search-btn" %>
+    <% end %>
   </div>
-<% end %>
+</header>
 
-<div class="card w-75 h-25 mx-auto">
-  <div class="card-header">
-    name
-    <%= link_to 'commit', "/communities/#{@community.ids}/boards/#{board.id}/edit", class: "text-success" %>
-    <%= link_to 'destroy', "/communities/#{@community.ids}/boards/#{board.id}", method: :delete %>
-  </div>
-  <div class="card-body">
-    <blockquote class="blockquote mb-0">
-      <% if board.text.present? %>
-        <p><%= board.text %></p>
-      <% end %>
-      <footer class="blockquote-footer">
-      <cite title="Source Title">community</cite></footer>
-    </blockquote>
-  </div>
-</div>
-<% end %>
-
-
+<%= render "board" %>
