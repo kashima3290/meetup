@@ -23,9 +23,10 @@ Rails.application.routes.draw do
     resources :parts, only: [:index, :new, :create]
     resources :boards, only: [:new, :create]
   end
-  resources :boards, only: [:index, :edit] do
+  resources :boards, only: [:index, :show, :edit] do
     member do
       get 'search'
     end
+    resources :comments, only: :create
   end
 end

@@ -27,9 +27,10 @@
          #<%= tag %>
         </p>
       <% end %>
-    <i class="text-dark fas h5 mt-5">Member : </i>
+    <i class="text-dark fas h5 mt-5"></i>
     <% @community.users.each do |user| %>
     <i class="mr-3 text-warning h5">
+      <%= image_tag user.image.url, class: "show-user-icon" %>
       <%= link_to "#{user.name}", user_path(user.id), class: "text-warning" %>
     </i>
   <% end %>

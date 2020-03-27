@@ -9,6 +9,15 @@ class BoardsController < ApplicationController
     @community = Community.find(params[:community_id])
     @board = @community.boards.new(board_params)
   end
+
+  def show
+    @board = Board.find(params[:id])
+    @comment = Comment.new
+    @comments = @board.comments.includes(:user).order(created_at: :desc)
+  end
+
+  def edit
+  end
   
   def create
     @community = Community.find(params[:community_id])

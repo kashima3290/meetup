@@ -1,8 +1,8 @@
 class Board < ApplicationRecord
   belongs_to :community
   belongs_to :user
-  has_many :board_users
   has_many :images
+  has_many :comments
   acts_as_taggable
 
 
