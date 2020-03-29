@@ -2,12 +2,12 @@
   <% if current_user.image.present? %>
     <%= image_tag current_user.image.url, class: "user-icon" %>
   <% end %>
-  <h1><%= link_to "#{current_user.name}", edit_user_path(current_user.id), class: "text-dark" %></h1>
+  <h1><%= link_to "#{current_user.name}", user_path(current_user.id), class: "text-dark" %></h1>
   <div class="icon-box">
-    <%= link_to "", user_path(current_user), class: "fas fa-user" %>
-    <%= link_to "", root_path(current_user.id), class: "fas fa-users" %>
-    <%= link_to "", new_community_path, class: "fas fa-user-plus" %>
-    <%= link_to "", boards_path, class: "fas fa-id-card-alt" %>
+    <%= link_to "acount", user_path(current_user), class: "fas fa-user btn border" %>
+    <%= link_to "My community", root_path(current_user.id), class: "fas fa-users btn border" %>
+    <%= link_to "New community", new_community_path, class: "fas fa-user-plus btn border" %>
+    <%= link_to "Boards", boards_path, class: "fas fa-id-card-alt btn border" %>
     <%= form_with url: communities_searches_path, method: "get" do |f| %>
       <%= f.text_field :keyword, class: "search-box ml-5", placeholder: "Search" %>
       <%= f.button "",class: "text-light bg-success fas fa-search search-btn" %>
@@ -16,38 +16,6 @@
 </header>
 
 <% @communities.each do |community| %>
-  <div class="card bg-light text-white community-card w-75 mx-auto mt-1 mb-1">
-  <% if community.image.present? %>
-    <%= image_tag community.image.url, class: "card-img-top" %>
-  <% end %>
-  <div class="card-img-overlay">
-    <% if community.user_ids.include?(current_user.id) %>
-    <div class="chat-link">
-    <%= link_to "#{community.name}", community_messages_path(community.id), class: "bg-link card-title h2" %>
-    </div>
-    <% else %>
-    <h5 class="card-title text-dark h2"><%= community.name %></h5>
-    <% end %>
-    <p class="card-text text-dark"><%= community.text %></p>
-    <div class='community-card-btns'>
-    <% if community.user_ids.include?(current_user.id) %>
-    <div class='community-card-btns'>
-    <%= link_to '', edit_community_path(community.id), class: "btn-lg text-dark fas fa-cog" %> 
-    <%= link_to '', community_path(community.id) ,class: "btn-lg text-dark fas fa-clipboard-list"%>
-    <%= link_to '', new_community_board_path(community.id),class: "btn-lg text-dark fas fa-pen-square"%>
-    <%= link_to 'Request', community_parts_path(community.id), class: "btn bg-link text-dark border" %>
-    </div>
-    <% else %>
-      <%= link_to ' Add Request', community_parts_path(community.id), class: "btn-lg bg-success text-light border fas fa-pray" %>
-    <% end %>
-    </div>
-      <% community.tag_list.each do |tag| %>
-        <p class="card-text text-secondary">
-        #<span><%= tag %></span>
-        </p>
-      <% end %>
-    </div>
-  </div>
+  <%= render partial: "communities/communities", locals: { community: community } %>
 <% end %>
-
 

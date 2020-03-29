@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
 
   def index
-    @communities = Community.includes(:user).order(created_at: :desc)
+    @communities = current_user.communities.order(created_at: :desc)
+    # communities = Community.includes(:user).order(created_at: :desc)
   end
 
   def edit
@@ -9,7 +10,8 @@ class UsersController < ApplicationController
   end
   
   def update
-    if current_user.update(user_params)
+    @user = User.find(params[:id])
+    if @user.update(user_params)
       redirect_to user_path
     else
       render :edit
@@ -22,7 +24,7 @@ class UsersController < ApplicationController
 
   private 
   def user_params
-    params.require(:user).permit(:image, :name, :age, :email)
+    params.require(:user).permit(:image, :name, :age, :email, :text, :gender)
   end
 
 end

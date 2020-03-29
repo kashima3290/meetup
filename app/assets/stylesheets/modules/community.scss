@@ -245,3 +245,22 @@ header{
   cursor: pointer;
 }
 
+// notification
+.fa-circle {
+  position: absolute;
+  margin-right: 5px;
+}
+
+// destroy
+.fa-times-circle {
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  text-decoration: none;
+}
+
+// boards
+// .board-images {
+//   height: 500px;
+//   width: 600px;
+// }

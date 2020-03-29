@@ -8,6 +8,7 @@ class User < ApplicationRecord
   has_many :messages
   has_many :parts
   has_many :comments
+
   acts_as_followable
   acts_as_follower
   

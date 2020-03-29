@@ -1,0 +1,36 @@
+
+<div class="card bg-light text-white community-card w-75 mx-auto mt-1 mb-1">
+  <% if community.image.present? %>
+    <%= image_tag community.image.url, class: "card-img-top" %>
+  <% end %>
+  <div class="card-img-overlay">
+    <% if community.user_ids.include?(current_user.id) %>
+    <div class="chat-link">
+    <%= link_to "#{community.name}", community_messages_path(community.id), class: "bg-link card-title h2" %>
+    </div>
+    <% else %>
+    <h5 class="card-title text-dark h2"><%= community.name %></h5>
+    <% end %>
+    <p class="card-text text-dark"><%= community.text %></p>
+    <div class='community-card-btns'>
+    <% if community.user_ids.include?(current_user.id) %>
+    <div class='community-card-btns'>
+    <%= link_to '', edit_community_path(community.id), class: "btn-lg text-dark fas fa-cog" %> 
+    <%= link_to '', community_path(community.id) ,class: "btn-lg text-dark fas fa-clipboard-list"%>
+    <%= link_to '', new_community_board_path(community.id),class: "btn-lg text-dark fas fa-pen-square"%>
+    <%= link_to '', community_parts_path(community.id), class: "btn-lg bg-link text-dark fas fa-envelope-square" %>
+    <% if community.parts.exists? %>
+    <i class="fas fa-circle text-danger"></i>
+    <% end %>
+    </div>
+    <% else %>
+      <%= link_to ' Add Request', community_parts_path(community.id), class: "btn-lg bg-success text-light border fas fa-pray" %>
+    <% end %>
+    </div>
+      <% community.tag_list.each do |tag| %>
+        <p class="card-text text-secondary">
+        #<span><%= tag %></span>
+        </p>
+      <% end %>
+    </div>
+  </div>

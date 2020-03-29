@@ -11,11 +11,11 @@
   </ol>
   <div class="carousel-inner">
     <div class="carousel-item active" data-interval="5000">
-      <%= image_tag board.images.first.url, class: "d-block w-50 h-50 mx-auto" %>
+      <%= image_tag board.images.first.url, class: "d-block mx-auto h-50 w-50 board-images" %>
     </div>
     <% board.images.drop(1).each do |image| %>
     <div class="carousel-item" data-interval="5000">
-      <%= image_tag image.url, class: "d-block w-50 h-50 mx-auto" %>
+      <%= image_tag image.url, class: "d-block mx-auto board-images h-50 w-50" %>
     </div>
     <% end %>
   </div>

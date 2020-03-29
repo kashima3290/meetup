@@ -20,7 +20,7 @@ Rails.application.routes.draw do
     namespace :api do
       resources :messages, only: :index, defaults: { format: 'json' }
     end
-    resources :parts, only: [:index, :new, :create]
+    resources :parts, only: [:index, :new, :create, :destroy]
     resources :boards, only: [:new, :create]
   end
   resources :boards, only: [:index, :show, :edit] do
@@ -29,4 +29,5 @@ Rails.application.routes.draw do
     end
     resources :comments, only: :create
   end
+  resources :notifications, only: :index
 end
