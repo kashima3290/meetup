@@ -6,7 +6,7 @@
   </div>
   <div class='message__main'>
     <% if message.image.present? %>
-      <%= image_tag message.image.url %>
+      <%= image_tag message.image.url, class: "" %>
     <% end %>
     <% if message.text.present? %>
     <p class="message__main--text"><%= message.text %></p>

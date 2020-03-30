@@ -25,6 +25,9 @@
     </div>
     <% else %>
       <%= link_to ' Add Request', community_parts_path(community.id), class: "btn-lg bg-success text-light border fas fa-pray" %>
+      <% if community.parts.exists? %>
+      <i class="fas fa-circle text-danger"></i>
+      <% end %>
     <% end %>
     </div>
       <% community.tag_list.each do |tag| %>

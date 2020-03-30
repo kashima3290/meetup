@@ -7,6 +7,7 @@
     <%= link_to "acount", user_path(current_user), class: "fas fa-user btn border" %>
     <%= link_to "My community", root_path(current_user.id), class: "fas fa-users btn border" %>
     <%= link_to "New community", new_community_path, class: "fas fa-user-plus btn border" %>
+    <%= link_to 'Settig', edit_community_path(@community.id), class: "fas fa-cog btn border" %> 
     <%= link_to "Boards", boards_path, class: "fas fa-id-card-alt btn border" %>
     <%= link_to "メッセージ", new_community_part_path, class: "fas fa-plus bg-success text-light p-2 rounded-pill border" %>
   </div>
