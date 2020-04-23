@@ -11,11 +11,11 @@
   </ol>
   <div class="carousel-inner">
     <div class="carousel-item active" data-interval="5000">
-      <%= image_tag board.images.first.url, class: "d-block w-50 h-50 mx-auto" %>
+      <%= image_tag board.images.first.url, class: "d-block mx-auto h-50 w-50 board-images" %>
     </div>
     <% board.images.drop(1).each do |image| %>
     <div class="carousel-item" data-interval="5000">
-      <%= image_tag image.url, class: "d-block w-50 h-50 mx-auto" %>
+      <%= image_tag image.url, class: "d-block mx-auto board-images h-50 w-50" %>
     </div>
     <% end %>
   </div>
@@ -42,6 +42,9 @@
         #<span><%= tag %></span>
       <% end %><p>
     <p class="card-text"><small class="text-muted"><%= board.created_at.strftime("%Y/%m/%d | %H:%M") %></p>
+    <% if board.comments.present? %>
+      <p class="h6 mt-3">comment : <%= board.comments.count %><span class="far fa-comment text-primary ml-3 h5"></span></p>
+    <% end %>
   </div>
 </div>
 <% end %>

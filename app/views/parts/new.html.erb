@@ -8,11 +8,15 @@
 </header>
 
 <%= form_with url: community_parts_path do |f| %>
-  <h1>TEXT</h1>
-  <%= f.text_area :text, placeholder: "text" %>
-  <h1>画像</h1>
+<div class="form-group w-50 mx-auto">
+  <div class="form-group">
+    <h1 for="exampleFormControlTextarea1">Text</h1>
+    <%= f.text_area :text, placeholder: "text", class: "form-control" %>
+  </div>
+  <h1>Image</h1>
   <%= f.label :image do %>
     <%= f.file_field :image %>
   <% end %>
-  <%= f.submit "OK" %>
+  <%= f.submit "OK", class: "btn border float-right text-light bg-success" %>
+</div>
 <% end %>

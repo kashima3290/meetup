@@ -2,12 +2,12 @@
   <% if current_user.image.present? %>
       <%= image_tag current_user.image.url, class: "user-icon" %>
   <% end %>
-  <h1><%= link_to "#{current_user.name}", edit_user_path(current_user.id), class: "text-dark" %></h1>
+  <h1><%= link_to "#{current_user.name}", user_path(current_user.id), class: "text-dark" %></h1>
   <div class="icon-box">
-    <%= link_to "", user_path(current_user), class: "fas fa-user" %>
-    <%= link_to "", root_path(current_user.id), class: "fas fa-users" %>
-    <%= link_to "", new_community_path, class: "fas fa-user-plus" %>
-    <%= link_to "", boards_path, class: "fas fa-id-card-alt" %>
-    <%= link_to "", communities_path, class: "fas fa-search" %>
+    <%= link_to "acount", user_path(current_user), class: "fas fa-user btn border" %>
+    <%= link_to "My community", root_path(current_user.id), class: "fas fa-users btn border" %>
+    <%= link_to "New community", new_community_path, class: "fas fa-user-plus btn border" %>
+    <%= link_to "Boards", boards_path, class: "fas fa-id-card-alt btn border" %>
+    <%= link_to "Communities", communities_path, class: "fas fa-search btn border" %>
   </div>
 </header>
