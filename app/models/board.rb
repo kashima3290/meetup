@@ -13,12 +13,12 @@ class Board < ApplicationRecord
   attr_accessor :delete_images
   after_validation do
     uploaders = images.delete_if do |uploader|
-      if Array(delete_images).include?(uploader.file.identifier)
+      if Array(delete_images).include?(uploader.file)
         uploader.remove!
         true
       end
     end
-    write_attribute(:images, uploaders.map { |uploader| uploader.file.identifier })
+    write_attribute(:images, uploaders.map { |uploader| uploader.file })
   end
 
   def images=(files)
