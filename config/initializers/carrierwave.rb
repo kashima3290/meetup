@@ -12,6 +12,6 @@ CarrierWave.configure do |config|
     region: 'ap-northeast-1'
   }
 
-  config.fog_directory = 'deploymeetup'
-  config.asset_host = 'https://s3-ap-northeast-1.amazonaws.com/deploymeetup'
+  config.fog_directory = 'raiki3232'
+  config.asset_host = 'https://s3-ap-northeast-1.amazonaws.com/raiki3232'
 end
